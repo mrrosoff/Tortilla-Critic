@@ -1,6 +1,6 @@
-import {CardContent, Collapse, Grid, IconButton, Typography} from "@material-ui/core";
-import GitHubIcon from "@material-ui/icons/GitHub";
 import React, {useState} from "react";
+
+import {CardContent, Collapse, Grid, IconButton, Typography} from "@material-ui/core";
 
 const CollapseArea = props =>
 {
@@ -26,15 +26,15 @@ const CollapseArea = props =>
 					  alignItems={'center'}
 				>
 					<Grid item>
-						<Typography>Download the {props.OS} client.</Typography>
+						<Typography>Download the {OS} client.</Typography>
 						<IconButton>
-							<GitHubIcon/>
+
 						</IconButton>
 					</Grid>
 					<Grid item>
 						<Typography>Or, view the web client.</Typography>
 						<IconButton>
-							<GitHubIcon/>
+
 						</IconButton>
 					</Grid>
 				</Grid>
