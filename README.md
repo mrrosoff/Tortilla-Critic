@@ -1,6 +1,6 @@
-# Project Name
+# Personal-Website
 
-### Project Short Description
+### Personal Website for Max Rosoff
 
 ## About Project
 
