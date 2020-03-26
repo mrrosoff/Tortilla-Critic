@@ -4,7 +4,7 @@
   "description": "Personal Website for Max Rosoff",
   "scripts": {
     "dev": "webpack-dev-server --mode development --devtool inline-source-map",
-    "prod": "webpack --mode production --devtool inline-source-map"
+    "prod": "webpack --mode production"
   },
   "author": "Max Rosoff",
   "license": "ISC",
