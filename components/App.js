@@ -24,6 +24,8 @@ const App = () =>
 			createMuiTheme({
 				palette: {
 					type: prefersDarkMode ? 'dark' : 'light',
+					primary: { main: '#11630b' },
+					secondary: { main: '#633c0b' }
 				},
 			}),
 		[prefersDarkMode],

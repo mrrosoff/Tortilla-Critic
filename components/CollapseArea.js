@@ -1,50 +1,71 @@
-import React, {useState} from "react";
+import React from "react";
 
-import {CardContent, Collapse, Grid, IconButton, Typography} from "@material-ui/core";
+import {Button, CardContent, Collapse, Grid, Typography} from "@material-ui/core";
 
 const CollapseArea = props =>
 {
-	const [OS, setOS] = useState(getOS(props.produceSnackBar));
-
-	if(OS === "iOS" || OS === "Android")
-	{
-		return (
-			<Collapse in={props.expanded} timeout="auto" unmountOnExit>
-				<CardContent>
-					<Typography>View the web client.</Typography>
-				</CardContent>
-			</Collapse>
-		)
-	}
-
 	return (
 		<Collapse in={props.expanded} timeout="auto" unmountOnExit>
 			<CardContent>
-				<Grid container
-					  justify={'center'}
-					  alignContent={'center'}
-					  alignItems={'center'}
-				>
-					<Grid item>
-						<Typography>Download the {OS} client.</Typography>
-						<IconButton>
-
-						</IconButton>
-					</Grid>
-					<Grid item>
-						<Typography>Or, view the web client.</Typography>
-						<IconButton>
-
-						</IconButton>
-					</Grid>
-				</Grid>
+				<InternalGrid produceSnackbar={props.produceSnackBar}/>
 			</CardContent>
 		</Collapse>
 	);
 };
 
+const InternalGrid = props =>
+{
+	return (
+		<Grid container
+			  justify={'center'}
+			  alignItems={'center'}
+			  alignContent={'center'}
+			  spacing={3}
+		>
+			<Grid item xs={12}>
+				<Typography variant={'h6'} align={'center'} gutterBottom>Project Explorer</Typography>
+				<Typography variant={'body2'} align={'center'}>
+					View my projects! With this interactive client built on the Electron framework, you can demo some
+					of my creations at home! Simply choose the option that is right for you.
+				</Typography>
+			</Grid>
+			<Grid item xs={12}>
+				{getClientOptions(props.produceSnackBar)}
+			</Grid>
+		</Grid>
+	)
+};
 
-function getOS(produceSnackbar)
+const getClientOptions = (produceSnackBar) =>
+{
+	let OS = getOS(produceSnackBar);
+
+	if(OS === "iOS" || OS === "Android")
+	{
+		return <Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>;
+	}
+
+	else
+	{
+		return (
+			<Grid container
+				  justify={'center'}
+				  alignItems={'center'}
+				  alignContent={'center'}
+				  spacing={2}
+			>
+				<Grid item>
+					<Button variant="contained" color={"primary"} size={'small'}>Download the {OS} Client</Button>
+				</Grid>
+				<Grid item>
+					<Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>
+				</Grid>
+			</Grid>
+		);
+	}
+};
+
+const getOS = (produceSnackbar) =>
 {
 	let userAgent = window.navigator.userAgent;
 	let platform = window.navigator.platform;
@@ -85,6 +106,6 @@ function getOS(produceSnackbar)
 	}
 
 	return os;
-}
+};
 
 export default CollapseArea;
