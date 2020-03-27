@@ -17,8 +17,16 @@ import CollapseArea from "./CollapseArea";
 import Profile from '../static/profile.jpg';
 
 const useStyles = makeStyles(theme => ({
-	card: {width: "50vw"},
-	media: {height: '55vh'},
+	card: { [theme.breakpoints.up('xs')]: { width: '90vw' },
+			[theme.breakpoints.up('sm')]: { width: '75vw' },
+			[theme.breakpoints.up('md')]: { width: "55vw" },
+			[theme.breakpoints.up('lg')]: { width: "55vw" }
+	},
+	media: { [theme.breakpoints.up('xs')]: { height: '65vh' },
+			 [theme.breakpoints.up('sm')]: { height: '60vh' },
+			 [theme.breakpoints.up('md')]: { height: "60vh" },
+			 [theme.breakpoints.up('lg')]: { height: "60vh" }
+	},
 	name: {paddingLeft: '10px'},
 	right: {marginLeft: 'auto'},
 	expand: {
