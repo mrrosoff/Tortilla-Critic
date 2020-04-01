@@ -1,13 +1,15 @@
 import React from "react";
 
-import {Button, CardContent, Collapse, Grid, Typography} from "@material-ui/core";
+import {Button, CardContent, Container, Collapse, Grid, Typography} from "@material-ui/core";
 
 const CollapseArea = props =>
 {
 	return (
 		<Collapse in={props.expanded} timeout="auto" unmountOnExit>
 			<CardContent>
-				<InternalGrid produceSnackbar={props.produceSnackBar}/>
+				<Container>
+					<InternalGrid produceSnackbar={props.produceSnackBar}/>
+				</Container>
 			</CardContent>
 		</Collapse>
 	);
@@ -26,7 +28,8 @@ const InternalGrid = props =>
 				<Typography variant={'h6'} align={'center'} gutterBottom>Project Explorer</Typography>
 				<Typography variant={'body2'} align={'center'}>
 					View my projects! With this interactive client built on the Electron framework, you can demo some
-					of my creations at home! Simply choose the option that is right for you.
+					of my creations at home! This explorer showcases a live demo, but to view the source code for my
+					projects, check out my GitHub page.
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
