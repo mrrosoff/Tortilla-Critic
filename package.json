@@ -1,7 +1,7 @@
 {
   "name": "personal-website",
   "version": "1.0.0",
-  "description": "Personal Website for Max Rosoff",
+  "description": "My Personal Website",
   "scripts": {
     "dev": "webpack-dev-server --mode development --devtool inline-source-map",
     "prod": "webpack --mode production"
