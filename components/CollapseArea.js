@@ -68,7 +68,7 @@ const ClientOptions = props =>
 
 const GreenButton = props =>
 {
-	return <Button variant="contained" color={"primary"} size={'small'} onClick={props.onClick}>{props.text}</Button>
+	return <Button variant="contained" color={"secondary"} size={'small'} onClick={props.onClick}>{props.text}</Button>
 
 };
 
