@@ -79,7 +79,7 @@ const Buttons = props =>
 
 		<IconButton
 			onClick={props.handleExpandClick}
-			aria-label="More"
+			color={"default"}
 			className={clsx(classes.expand, {[classes.expandOpen]: props.expanded})}
 		>
 			<ExpandMoreIcon/>
@@ -90,11 +90,11 @@ const Buttons = props =>
 	return (
 		<CardActions disableSpacing>
 			<Typography variant={'h6'} className={classes.name}>Max Rosoff</Typography>
-			<LinkButton href={"https://www.facebook.com/max.rosoff.75"} icon={<FacebookIcon />}
+			<LinkButton href={"https://www.facebook.com/max.rosoff.75"} icon={<FacebookIcon color={"default"}/>}
 						className={classes.right}/>
-			<LinkButton href={"https://www.instagram.com/thenameismr.r/"} icon={<InstagramIcon/>}/>
-			<LinkButton href={"https://www.linkedin.com/in/max-rosoff"} icon={<LinkedInIcon/>}/>
-			<LinkButton href={"https://www.github.com/mrrosoff"} icon={<GitHubIcon/>}/>
+			<LinkButton href={"https://www.instagram.com/thenameismr.r/"} icon={<InstagramIcon color={"default"}/>}/>
+			<LinkButton href={"https://www.linkedin.com/in/max-rosoff"} icon={<LinkedInIcon color={"default"}/>}/>
+			<LinkButton href={"https://www.github.com/mrrosoff"} icon={<GitHubIcon color={"default"}/>}/>
 			{More}
 		</CardActions>
 	);
