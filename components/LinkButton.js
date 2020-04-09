@@ -1,18 +1,18 @@
 import React from "react";
 
-import {IconButton, Link} from "@material-ui/core";
+import {IconButton} from "@material-ui/core";
 
 const LinkButton = props =>
 {
 	return (
-		<Link href={props.href}
-			  target="_blank"
-			  rel="noopener"
-			  component={IconButton}
-			  className={props.className ? props.className : ""}
+		<IconButton
+			href={props.href}
+			target="_blank"
+			rel="noopener"
+			className={props.className ? props.className : ""}
 		>
 			{props.icon}
-		</Link>
+		</IconButton>
 	);
 };
 
