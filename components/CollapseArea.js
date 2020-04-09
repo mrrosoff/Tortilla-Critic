@@ -8,7 +8,7 @@ const CollapseArea = props =>
 		<Collapse in={props.expanded} timeout="auto" unmountOnExit>
 			<CardContent>
 				<Container>
-					<InternalGrid OS={props.OS}/>
+					<InternalGrid OS={props.OS} produceSnackbar={props.produceSnackbar}/>
 				</Container>
 			</CardContent>
 		</Collapse>
@@ -33,7 +33,7 @@ const InternalGrid = props =>
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				<ClientOptions OS={props.OS} />
+				<ClientOptions {...props}/>
 			</Grid>
 		</Grid>
 	)
@@ -43,6 +43,8 @@ const ClientOptions = props =>
 {
 	let OS = props.OS;
 
+	let notReadyMessage = "This Feature Will Be Available In A Future Release.";
+
 	return (
 		<Grid container
 			  justify={'center'}
@@ -51,13 +53,23 @@ const ClientOptions = props =>
 			  spacing={2}
 		>
 			<Grid item>
-				<Button variant="contained" color={"primary"} size={'small'}>Download the {OS} Client</Button>
+				<GreenButton text={`Download the ${OS} Client`} onClick={() =>
+					props.produceSnackbar(notReadyMessage, "info")
+				}/>
 			</Grid>
 			<Grid item>
-				<Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>
+				<GreenButton text={"View the Web Client"} onClick={() =>
+					props.produceSnackbar(notReadyMessage, "info")
+				}/>
 			</Grid>
 		</Grid>
 	);
+};
+
+const GreenButton = props =>
+{
+	return <Button variant="contained" color={"primary"} size={'small'} onClick={props.onClick}>{props.text}</Button>
+
 };
 
 export default CollapseArea;

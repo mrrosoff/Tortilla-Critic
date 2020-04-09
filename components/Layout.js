@@ -44,7 +44,7 @@ const Layout = props =>
 	const handleExpandClick = () => setExpanded(!expanded);
 	const OS = getOS(props.produceSnackBar);
 
-	let collapseArea = <CollapseArea expanded={expanded} OS={OS}/>;
+	let collapseArea = <CollapseArea expanded={expanded} OS={OS} produceSnackbar={props.produceSnackBar}/>;
 	let renderMore = true;
 
 	if (OS === "iOS" || OS === "Android")
