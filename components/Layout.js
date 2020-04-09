@@ -42,6 +42,16 @@ const Layout = props =>
 	const [expanded, setExpanded] = useState(false);
 
 	const handleExpandClick = () => setExpanded(!expanded);
+	const OS = getOS(props.produceSnackBar);
+
+	let collapseArea = <CollapseArea expanded={expanded} OS={OS}/>;
+	let renderMore = true;
+
+	if (OS === "iOS" || OS === "Android")
+	{
+		collapseArea = null;
+		renderMore = false;
+	}
 
 	return (
 		<Grid container
@@ -53,8 +63,8 @@ const Layout = props =>
 			<Grid item>
 				<Card className={classes.card}>
 					<CardMedia image={Profile} title={'Max Rosoff'} className={classes.media}/>
-					<Buttons expanded={expanded} handleExpandClick={handleExpandClick}/>
-					<CollapseArea expanded={expanded} produceSnackbar={props.produceSnackBar}/>
+					<Buttons renderMore={renderMore} expanded={expanded} handleExpandClick={handleExpandClick}/>
+					{collapseArea}
 				</Card>
 			</Grid>
 		</Grid>
@@ -64,6 +74,19 @@ const Layout = props =>
 const Buttons = props =>
 {
 	const classes = useStyles();
+
+	const More = props.renderMore ?
+
+		<IconButton
+			onClick={props.handleExpandClick}
+			aria-label="More"
+			className={clsx(classes.expand, {[classes.expandOpen]: props.expanded})}
+		>
+			<ExpandMoreIcon/>
+		</IconButton>
+
+		: null;
+
 	return (
 		<CardActions disableSpacing>
 			<Typography variant={'h6'} className={classes.name}>Max Rosoff</Typography>
@@ -72,15 +95,52 @@ const Buttons = props =>
 			<LinkButton href={"https://www.instagram.com/thenameismr.r/"} icon={<InstagramIcon/>}/>
 			<LinkButton href={"https://www.linkedin.com/in/max-rosoff"} icon={<LinkedInIcon/>}/>
 			<LinkButton href={"https://www.github.com/mrrosoff"} icon={<GitHubIcon/>}/>
-			<IconButton
-				onClick={props.handleExpandClick}
-				aria-label="More"
-				className={clsx(classes.expand, {[classes.expandOpen]: props.expanded})}
-			>
-				<ExpandMoreIcon/>
-			</IconButton>
+			{More}
 		</CardActions>
 	);
+};
+
+const getOS = (produceSnackbar) =>
+{
+	let userAgent = window.navigator.userAgent;
+	let platform = window.navigator.platform;
+
+	let macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
+	let windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+	let iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+	let os = null;
+
+	if(macosPlatforms.indexOf(platform) !== -1)
+	{
+		os = 'Mac OS';
+	}
+
+	else if(iosPlatforms.indexOf(platform) !== -1)
+	{
+		os = 'iOS';
+	}
+
+	else if(windowsPlatforms.indexOf(platform) !== -1)
+	{
+		os = 'Windows';
+	}
+
+	else if(/Android/.test(userAgent))
+	{
+		os = 'Android';
+	}
+
+	else if(/Linux/.test(platform))
+	{
+		os = 'Linux';
+	}
+
+	else
+	{
+		produceSnackbar("You are using an unspecified platform. Some effects may not operate correctly.", "warning")
+	}
+
+	return os;
 };
 
 export default Layout;

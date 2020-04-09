@@ -8,7 +8,7 @@ const CollapseArea = props =>
 		<Collapse in={props.expanded} timeout="auto" unmountOnExit>
 			<CardContent>
 				<Container>
-					<InternalGrid produceSnackbar={props.produceSnackBar}/>
+					<InternalGrid OS={props.OS}/>
 				</Container>
 			</CardContent>
 		</Collapse>
@@ -33,82 +33,31 @@ const InternalGrid = props =>
 				</Typography>
 			</Grid>
 			<Grid item xs={12}>
-				{getClientOptions(props.produceSnackBar)}
+				<ClientOptions OS={props.OS} />
 			</Grid>
 		</Grid>
 	)
 };
 
-const getClientOptions = (produceSnackBar) =>
+const ClientOptions = props =>
 {
-	let OS = getOS(produceSnackBar);
+	let OS = props.OS;
 
-	if(OS === "iOS" || OS === "Android")
-	{
-		return <Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>;
-	}
-
-	else
-	{
-		return (
-			<Grid container
-				  justify={'center'}
-				  alignItems={'center'}
-				  alignContent={'center'}
-				  spacing={2}
-			>
-				<Grid item>
-					<Button variant="contained" color={"primary"} size={'small'}>Download the {OS} Client</Button>
-				</Grid>
-				<Grid item>
-					<Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>
-				</Grid>
+	return (
+		<Grid container
+			  justify={'center'}
+			  alignItems={'center'}
+			  alignContent={'center'}
+			  spacing={2}
+		>
+			<Grid item>
+				<Button variant="contained" color={"primary"} size={'small'}>Download the {OS} Client</Button>
 			</Grid>
-		);
-	}
-};
-
-const getOS = (produceSnackbar) =>
-{
-	let userAgent = window.navigator.userAgent;
-	let platform = window.navigator.platform;
-
-	let macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'];
-	let windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
-	let iosPlatforms = ['iPhone', 'iPad', 'iPod'];
-	let os = null;
-
-	if(macosPlatforms.indexOf(platform) !== -1)
-	{
-		os = 'Mac OS';
-	}
-
-	else if(iosPlatforms.indexOf(platform) !== -1)
-	{
-		os = 'iOS';
-	}
-
-	else if(windowsPlatforms.indexOf(platform) !== -1)
-	{
-		os = 'Windows';
-	}
-
-	else if(/Android/.test(userAgent))
-	{
-		os = 'Android';
-	}
-
-	else if(/Linux/.test(platform))
-	{
-		os = 'Linux';
-	}
-
-	else
-	{
-		produceSnackbar("You are using an unspecified platform. Some effects may not operate correctly.", "warning")
-	}
-
-	return os;
+			<Grid item>
+				<Button variant="contained" color={"primary"} size={'small'}>View the Web Client</Button>
+			</Grid>
+		</Grid>
+	);
 };
 
 export default CollapseArea;
