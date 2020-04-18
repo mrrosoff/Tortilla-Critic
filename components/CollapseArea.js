@@ -53,14 +53,10 @@ const ClientOptions = props =>
 			  spacing={2}
 		>
 			<Grid item>
-				<GreenButton text={`Download the ${OS} Client`} onClick={() =>
-					props.produceSnackbar(notReadyMessage, "info")
-				}/>
+				<GreenButton text={`Download the ${OS} Client`} onClick={() => props.produceSnackbar(notReadyMessage, "info")}/>
 			</Grid>
 			<Grid item>
-				<GreenButton text={"View the Web Client"} onClick={() =>
-					props.produceSnackbar(notReadyMessage, "info")
-				}/>
+				<GreenButton text={"View the Web Client"} onClick={() => props.produceSnackbar(notReadyMessage, "info")}/>
 			</Grid>
 		</Grid>
 	);

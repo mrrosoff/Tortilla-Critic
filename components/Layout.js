@@ -18,14 +18,14 @@ import Profile from '../static/profile.jpg';
 
 const useStyles = makeStyles(theme => ({
 	card: { [theme.breakpoints.up('xs')]: { width: '90vw' },
-			[theme.breakpoints.up('sm')]: { width: '75vw' },
-			[theme.breakpoints.up('md')]: { width: "55vw" },
-			[theme.breakpoints.up('lg')]: { width: "55vw" }
+		[theme.breakpoints.up('sm')]: { width: '75vw' },
+		[theme.breakpoints.up('md')]: { width: "55vw" },
+		[theme.breakpoints.up('lg')]: { width: "55vw" }
 	},
 	media: { [theme.breakpoints.up('xs')]: { height: '65vh' },
-			 [theme.breakpoints.up('sm')]: { height: '60vh' },
-			 [theme.breakpoints.up('md')]: { height: "60vh" },
-			 [theme.breakpoints.up('lg')]: { height: "60vh" }
+		[theme.breakpoints.up('sm')]: { height: '60vh' },
+		[theme.breakpoints.up('md')]: { height: "60vh" },
+		[theme.breakpoints.up('lg')]: { height: "60vh" }
 	},
 	name: {paddingLeft: '10px'},
 	right: {marginLeft: 'auto'},
@@ -54,20 +54,27 @@ const Layout = props =>
 	}
 
 	return (
-		<Grid container
-			  justify={'center'}
-			  alignItems={'center'}
-			  alignContent={'center'}
-			  style={{height: '100vh'}}
-		>
-			<Grid item>
-				<Card className={classes.card}>
-					<CardMedia image={Profile} title={'Max Rosoff'} className={classes.media}/>
-					<Buttons renderMore={renderMore} expanded={expanded} handleExpandClick={handleExpandClick}/>
-					{collapseArea}
-				</Card>
+		<>
+			<Grid container
+				  justify={'center'}
+				  alignItems={'center'}
+				  alignContent={'center'}
+				  style={{height: '100vh'}}
+			>
+				<Grid item>
+					<Card className={classes.card}>
+						<CardMedia image={Profile} title={'Max Rosoff'} className={classes.media}/>
+						<Buttons renderMore={renderMore} expanded={expanded} handleExpandClick={handleExpandClick}/>
+						{collapseArea}
+					</Card>
+				</Grid>
 			</Grid>
-		</Grid>
+			<div style={{
+				position: 'absolute',
+				top: '0px', right: '0px',
+				width: '30px', height: '30px',
+			}} onClick={() => confetti.toggle()}/>
+		</>
 	);
 };
 
