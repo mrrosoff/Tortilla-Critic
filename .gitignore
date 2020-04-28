@@ -6,3 +6,8 @@ node_modules
 # Idea Files
 
 .idea/workspace.xml
+
+# Build Files
+
+dist
+build
