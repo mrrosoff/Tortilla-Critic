@@ -11,14 +11,8 @@ links to [my custom domain.](maxrosoff.com)
 
 ## Installation
 
-### Development
+This site is built using Webpack, and uses NPM as a package manager. To build the site for development, use 
 
 ```bash
 npm install && npm run dev
-```
-
-## Production
-
-```bash
-npm install && npm run prod
 ```
