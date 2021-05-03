@@ -1,13 +1,21 @@
-# Node Files
-
-package-lock.json
-node_modules
-
 # Idea Files
 
 .idea/workspace.xml
 
-# Build Files
+# Node Files
 
-dist
+node_modules
+package-lock.json
+
+# Output Files
+
 build
+coverage
+dist
+lib
+out
+
+# Server Files
+
+dependency-reduced-pom.xml
+target
