@@ -7,7 +7,15 @@ export default class Emulator {
 		const suggestions = this.suggest(state, partialStr);
 
 		if (suggestions.length !== 1) {
+			if (state.getTabCount() === 0) {
+				state.setTabCount(state.getTabCount() + 1);
+			} else {
+				this.addCommandToHistory(state, "");
+				this.addCommandOutput(state, [{ output: suggestions.join(" ") }]);
+			}
 			return partialStr;
+		} else {
+			state.setTabCount(0);
 		}
 
 		const strParts = partialStr.split(" ");
@@ -44,11 +52,12 @@ export default class Emulator {
 		this.addCommandToHistory(state, str);
 
 		if (str.trim() === "") {
-			this.addCommandOutput(state, "", "output");
+			this.addCommandOutput(state, [{ output: "" }]);
 		} else {
 			this.updateStateByExecution(state, str, errorString);
 		}
 
+		state.setTabCount(0);
 		return state;
 	}
 

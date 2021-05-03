@@ -2,6 +2,7 @@ import { create as createCommandMapping } from "./CommandMapping";
 import * as FileUtil from "../fs/util/file-util";
 import * as PathUtil from "../fs/util/path-util";
 
+const TAB_COUNT_KEY = "tabCount";
 const FS_KEY = "fs";
 const ENVIRONMENT_VARIABLES_KEY = "environmentVariables";
 const HISTORY_KEY = "history";
@@ -18,6 +19,7 @@ export default class EmulatorState {
 	}
 
 	static create({
+		tabCount = 0,
 		fs = { "/": FileUtil.makeEmptyDirectory() },
 		environmentVariables = { cwd: "/" },
 		history = [],
@@ -25,6 +27,7 @@ export default class EmulatorState {
 		commandMapping = createCommandMapping()
 	}) {
 		const stateMap = {
+			[TAB_COUNT_KEY]: tabCount,
 			[FS_KEY]: fs,
 			[ENVIRONMENT_VARIABLES_KEY]: environmentVariables,
 			[HISTORY_KEY]: history,
@@ -33,6 +36,14 @@ export default class EmulatorState {
 		};
 
 		return new EmulatorState(stateMap);
+	}
+
+	getTabCount() {
+		return this.state[TAB_COUNT_KEY];
+	}
+
+	setTabCount(newTabCount) {
+		this.state[TAB_COUNT_KEY] = newTabCount;
 	}
 
 	getFileSystem() {

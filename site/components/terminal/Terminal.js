@@ -44,6 +44,7 @@ const Terminal = (props, ref) => {
 			case "Tab":
 				e.preventDefault();
 				setInput(emulator.autocomplete(emulatorState, input));
+				setOutputs(calculateOutputs());
 				break;
 
 			case "Enter":

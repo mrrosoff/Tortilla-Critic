@@ -20,9 +20,8 @@ export const suggestCommandOptions = (cmdMapping, commandName, partialStr) => {
 
 export const suggestFileSystemNames = (fs, cwd, partialStr) => {
 	const path = PathUtil.toAbsolutePath(partialStr, cwd);
-	console.log(path);
 	const fsPart = fsSearchAutoComplete(fs, path);
-	const suggestions = Object.keys(fsPart)
+	return Object.keys(fsPart)
 		.filter(
 			(suggestion) =>
 				PathUtil.getLastPathPart(path) ===
@@ -33,6 +32,4 @@ export const suggestFileSystemNames = (fs, cwd, partialStr) => {
 			pathParts[pathParts.length - 1] = suggestion;
 			return pathParts.join("/");
 		});
-	console.log(suggestions);
-	return suggestions;
 };
