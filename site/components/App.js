@@ -4,7 +4,7 @@ import { Hidden } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { SnackbarProvider, useSnackbar } from "notistack";
+import { SnackbarProvider } from "notistack";
 
 import MobileLayout from "./MobileLayout";
 import DesktopLayout from "./DesktopLayout";

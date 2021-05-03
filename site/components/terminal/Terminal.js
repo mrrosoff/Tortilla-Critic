@@ -68,13 +68,13 @@ const Terminal = (props, ref) => {
 						{content.command}
 					</OutputHeader>
 				</Grid>
-				{content.output.map((output) =>
+				{content.output.map((output, key) =>
 					output.type === "error" ? (
-						<Grid item>
+						<Grid item key={key}>
 							<OutputError {...props}>{output.output}</OutputError>
 						</Grid>
 					) : (
-						<Grid item>
+						<Grid item key={key}>
 							<OutputText {...props}>{output.output}</OutputText>
 						</Grid>
 					)

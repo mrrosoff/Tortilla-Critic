@@ -13,7 +13,7 @@ const functionDef = (state, commandOptions) => {
 	}
 
 	try {
-		const filePath = relativeToAbsolutePath(state, argv[0]);
+		const filePath = relativeToAbsolƒutePath(state, argv[0]);
 		FileOp.write(state.getFileSystem(), filePath, makeEmptyFile());
 		return { output: "" };
 	} catch (err) {

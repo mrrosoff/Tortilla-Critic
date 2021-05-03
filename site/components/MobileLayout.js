@@ -1,12 +1,14 @@
 import React from "react";
 
-import { Avatar, Button, Grid } from "@material-ui/core";
+import { Avatar, Box, Button, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
+import DescriptionIcon from "@material-ui/icons/Description";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import GitHubIcon from "@material-ui/icons/GitHub";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 import Profile from "../static/images/profile.jpg";
 
@@ -32,7 +34,7 @@ const MobileLayout = (props) => {
 				item
 				container
 				direction={"column"}
-				spacing={8}
+				spacing={6}
 				justify={"center"}
 				alignItems={"center"}
 				alignContent={"center"}
@@ -50,35 +52,63 @@ const MobileLayout = (props) => {
 						alignContent={"center"}
 					>
 						<Grid item>
-							<LinkButtonWithIcon
-								href={"https://www.facebook.com/maxr.rosoff"}
-								icon={<FacebookIcon />}
-							>
-								Facebook
+							<LinkButtonWithIcon href={"https://bit.ly/3x5nCbg"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<DescriptionIcon />
+									<Box pl={2}>
+										<Typography>Resume</Typography>
+									</Box>
+								</Box>
 							</LinkButtonWithIcon>
 						</Grid>
 						<Grid item>
-							<LinkButtonWithIcon
-								href={"https://www.instagram.com/thenameismr.r/"}
-								icon={<InstagramIcon />}
-							>
-								Instagram
+							<LinkButtonWithIcon href={"https://www.github.com/mrrosoff"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<GitHubIcon />
+									<Box pl={2}>
+										<Typography>GitHub</Typography>
+									</Box>
+								</Box>
 							</LinkButtonWithIcon>
 						</Grid>
 						<Grid item>
-							<LinkButtonWithIcon
-								href={"https://www.linkedin.com/in/max-rosoff"}
-								icon={<LinkedInIcon />}
-							>
-								LinkedIn
+							<LinkButtonWithIcon href={"https://www.linkedin.com/in/max-rosoff"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<LinkedInIcon />
+									<Box pl={2}>
+										<Typography>LinkedIn</Typography>
+									</Box>
+								</Box>
 							</LinkButtonWithIcon>
 						</Grid>
 						<Grid item>
-							<LinkButtonWithIcon
-								href={"https://www.github.com/mrrosoff"}
-								icon={<GitHubIcon />}
-							>
-								GitHub
+							<LinkButtonWithIcon href={"https://www.facebook.com/maxr.rosoff"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<FacebookIcon />
+									<Box pl={2}>
+										<Typography>Facebook</Typography>
+									</Box>
+								</Box>
+							</LinkButtonWithIcon>
+						</Grid>
+						<Grid item>
+							<LinkButtonWithIcon href={"https://www.instagram.com/thenameismr.r/"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<InstagramIcon />
+									<Box pl={2}>
+										<Typography>Instagram</Typography>
+									</Box>
+								</Box>
+							</LinkButtonWithIcon>
+						</Grid>
+						<Grid item>
+							<LinkButtonWithIcon href={"https://twitter.com/MrRosoff"}>
+								<Box display={"flex"} alignItems={"center"}>
+									<TwitterIcon />
+									<Box pl={2}>
+										<Typography>Twitter</Typography>
+									</Box>
+								</Box>
 							</LinkButtonWithIcon>
 						</Grid>
 					</Grid>

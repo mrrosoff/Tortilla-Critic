@@ -32,7 +32,10 @@ const BootUp = (props) => {
 	return (
 		<Grid container direction={"column"} spacing={4}>
 			<Grid item>
-				<HeaderAndReleaseData {...props} />
+				<Header {...props} />
+			</Grid>
+			<Grid item>
+				<ReleaseData />
 			</Grid>
 			{state >= 1 ? <Grid item>AF6S7V89 - JUC84X</Grid> : null}
 			{state >= 2 ? (
@@ -59,12 +62,7 @@ const BootUp = (props) => {
 	);
 };
 
-const HeaderAndReleaseData = (props) => {
-	let creationDate = new Date();
-	creationDate.setMinutes(creationDate.getMinutes() - 8);
-	creationDate.setHours(creationDate.getHours() - 2);
-	creationDate.setDate(creationDate.getDate() - 5);
-
+const Header = (props) => {
 	return (
 		<Grid container spacing={4}>
 			<Grid item>
@@ -84,21 +82,29 @@ const HeaderAndReleaseData = (props) => {
 					</Grid>
 				</Grid>
 			</Grid>
+		</Grid>
+	);
+};
+
+const ReleaseData = (props) => {
+	const creationDate = new Date();
+	creationDate.setMinutes(creationDate.getMinutes() - 8);
+	creationDate.setHours(creationDate.getHours() - 2);
+	creationDate.setDate(creationDate.getDate() - 5);
+	
+	return (
+		<Grid container justify={"center"} direction={"column"} style={{ height: "100%" }}>
 			<Grid item>
-				<Grid container justify={"center"} direction={"column"} style={{ height: "100%" }}>
-					<Grid item>
-						<Typography>Released: {creationDate.toString()}</Typography>
-					</Grid>
-					<Grid item>
-						<a
-							href={"https://github.com/mrrosoff/Personal-Website"}
-							target="_blank"
-							style={{ color: "#FCFCFC", fontSize: 22 }}
-						>
-							Open Source (BETA 4.1.2)
-						</a>
-					</Grid>
-				</Grid>
+				<Typography>Released: {creationDate.toString()}</Typography>
+			</Grid>
+			<Grid item>
+				<a
+					href={"https://github.com/mrrosoff/Personal-Website"}
+					target="_blank"
+					style={{ color: "#FCFCFC", fontSize: 22 }}
+				>
+					Open Source (BETA 4.1.2)
+				</a>
 			</Grid>
 		</Grid>
 	);

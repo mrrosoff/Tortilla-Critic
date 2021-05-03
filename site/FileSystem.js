@@ -6,7 +6,16 @@ export const files = {
 			Desktop: {
 				type: "d",
 				permissions: "rwx------",
-				contents: {}
+				contents: {
+					"README.md": {
+						type: "-",
+						permissions: "rwx------",
+						contents: `
+							Welcome To My Website!
+						
+						`
+					}
+				}
 			},
 			Documents: {
 				type: "d",

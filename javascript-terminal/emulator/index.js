@@ -11,8 +11,8 @@ export default class Emulator {
 		}
 
 		const strParts = partialStr.split(" ");
-
 		strParts[strParts.length - 1] = suggestions[0];
+
 		return strParts.join(" ");
 	}
 

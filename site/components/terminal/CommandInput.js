@@ -5,9 +5,6 @@ import PromptSymbol from "./PromptSymbol";
 import { Grid, InputBase, Typography } from "@material-ui/core";
 
 const CommandInput = (props, ref) => {
-	const inputRef = useRef();
-	useImperativeHandle(ref, () => ({ focus: () => inputRef.current.focus() }));
-
 	useEffect(() => {
 		let interval = setInterval(() => {
 			let visibility = document.getElementById("cursor").style.visibility;
@@ -16,6 +13,7 @@ const CommandInput = (props, ref) => {
 		}, 600);
 		return () => clearInterval(interval);
 	});
+
 	return (
 		<Grid container alignContent={"center"} alignItems={"center"} spacing={2}>
 			<Grid item>
@@ -37,7 +35,7 @@ const CommandInput = (props, ref) => {
 					<Grid item style={{ width: 0, height: 0 }}>
 						<InputBase
 							autoFocus
-							inputRef={inputRef}
+							inputRef={ref}
 							value={props.value}
 							onChange={props.onChange}
 							onKeyDown={props.onKeyDown}
