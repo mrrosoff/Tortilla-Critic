@@ -12,7 +12,6 @@ module.exports = {
 		port: 3000,
 		open: true,
 		hot: true,
-		stats: "minimal",
 		historyApiFallback: true
 	},
 	devtool: "eval-source-map",
@@ -47,10 +46,11 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: "./site/static/template/index.html",
-			favicon: "./site/static/template/favicon.ico",
+			template: "./static/template/index.html",
+			favicon: "./static/template/favicon.ico",
 			title: "Max Rosoff"
 		}),
 		new webpack.HotModuleReplacementPlugin()
-	]
+	],
+	stats: "minimal"
 };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Box, Grid, Typography } from "@material-ui/core";
 
-import Logo from "../static/images/logo.png";
+import Logo from "../../static/images/logo.png";
 
 const BootUp = (props) => {
 	const [state, setState] = useState(0);

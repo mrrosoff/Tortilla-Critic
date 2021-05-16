@@ -10,7 +10,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
-import Profile from "../static/images/profile.jpg";
+import Profile from "../../static/images/profile.jpg";
 
 const useStyles = makeStyles((theme) => ({
 	largeAvatar: {

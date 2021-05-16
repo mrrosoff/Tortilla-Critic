@@ -3,6 +3,6 @@ import ReactDOM from "react-dom";
 
 import App from "./components/App";
 
-import "./static/styles/global.scss";
+import "../static/styles/global.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));
