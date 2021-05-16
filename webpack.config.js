@@ -48,7 +48,13 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./static/template/index.html",
 			favicon: "./static/template/favicon.ico",
-			title: "Max Rosoff"
+			templateParameters: {
+				title: "Max Rosoff",
+				url: "https://maxrosoff.com",
+				description:
+					"Visit my personal website for links to all of my social media and my resume.",
+				image: "https://maxrosoff.com/25924c04cedd27cf36486935c5b0ee7c.jpg"
+			}
 		}),
 		new webpack.HotModuleReplacementPlugin()
 	],
