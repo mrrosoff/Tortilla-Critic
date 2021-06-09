@@ -1,27 +1,32 @@
 import { parseCommands } from "../parser";
 import { suggestCommandOptions, suggestCommands, suggestFileSystemNames } from "./auto-complete";
 import * as CommandMappingUtil from "../emulator-state/CommandMapping";
+import * as PathUtil from "../fs/util/path-util";
+import { fsSearchParent } from "../fs/operations/base-operations";
 
 export default class Emulator {
 	autocomplete(state, partialStr) {
-		const suggestions = this.suggest(state, partialStr);
-
-		if (suggestions.length !== 1) {
-			if (state.getTabCount() === 0) {
-				state.setTabCount(state.getTabCount() + 1);
+		try {
+			const suggestions = this.suggest(state, partialStr);
+			console.log(suggestions);
+			if (suggestions.length > 1) {
+				if (state.getTabCount() === 0) {
+					state.setTabCount(state.getTabCount() + 1);
+				} else {
+					this.addCommandToHistory(state, "");
+					this.addCommandOutput(state, [{ output: suggestions.join(" ") }]);
+				}
+				return partialStr;
 			} else {
-				this.addCommandToHistory(state, "");
-				this.addCommandOutput(state, [{ output: suggestions.join(" ") }]);
+				state.setTabCount(0);
 			}
+
+			const strParts = partialStr.split(" ");
+			strParts[strParts.length - 1] = suggestions[0];
+			return strParts.join(" ");
+		} catch (err) {
 			return partialStr;
-		} else {
-			state.setTabCount(0);
 		}
-
-		const strParts = partialStr.split(" ");
-		strParts[strParts.length - 1] = suggestions[0];
-
-		return strParts.join(" ");
 	}
 
 	suggest(state, partialStr) {
@@ -42,13 +47,22 @@ export default class Emulator {
 		const strToComplete = isTypingNewPart ? "" : lastTextEntered;
 		const cwd = state.getEnvVariables().cwd;
 
+		if (
+			strToComplete !== "" &&
+			Object.keys(
+				fsSearchParent(state.getFileSystem(), PathUtil.toAbsolutePath(strToComplete, cwd))
+			).includes(PathUtil.getLastPathPart(PathUtil.toAbsolutePath(strToComplete, cwd)))
+		) {
+			throw Error("Already Completed Path");
+		}
+
 		return [
 			...suggestCommandOptions(state.getCommandMapping(), cmdName, strToComplete),
 			...suggestFileSystemNames(state.getFileSystem(), cwd, strToComplete)
 		];
 	}
 
-	execute(state, str, executionListeners = [], errorString) {
+	execute(state, str, errorString) {
 		this.addCommandToHistory(state, str);
 
 		if (str.trim() === "") {

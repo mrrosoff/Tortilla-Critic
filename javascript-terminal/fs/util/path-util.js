@@ -18,12 +18,14 @@ export const isRelativePath = (path) => {
 	return !isAbsolutePath(path);
 };
 
-export const toPathParts = (path) => {
+export const toPathParts = (path, shouldRemoveTrailingSeparator = true) => {
 	if (path === "/") {
 		return ["/"];
 	}
 
-	path = removeTrailingSeparator(path);
+	if (shouldRemoveTrailingSeparator) {
+		path = removeTrailingSeparator(path);
+	}
 	const pathParts = path.split("/");
 
 	if (isAbsolutePath(path)) {
@@ -51,8 +53,8 @@ export const getPathParent = (filePath) => {
 	return toPath(pathPartsWithoutFileName);
 };
 
-export const getLastPathPart = (filePath) => {
-	const pathParts = toPathParts(filePath);
+export const getLastPathPart = (filePath, shouldRemoveTrailingSeparator = true) => {
+	const pathParts = toPathParts(filePath, shouldRemoveTrailingSeparator);
 	return pathParts[pathParts.length - 1];
 };
 

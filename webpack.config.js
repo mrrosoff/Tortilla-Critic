@@ -15,6 +15,7 @@ module.exports = {
 		historyApiFallback: true
 	},
 	devtool: "eval-source-map",
+	mode: process.env.NODE_ENV || "development",
 	module: {
 		rules: [
 			{
@@ -56,7 +57,10 @@ module.exports = {
 				image: "https://maxrosoff.com/25924c04cedd27cf36486935c5b0ee7c.jpg"
 			}
 		}),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.DefinePlugin({
+			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
+		})
 	],
 	stats: "minimal"
 };
