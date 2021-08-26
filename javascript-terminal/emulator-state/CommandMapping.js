@@ -1,46 +1,33 @@
-import commands from "../commands";
+import commands from "../commands.js";
 
 export const create = (commandMapping = commands) => {
-	for (const commandName of Object.keys(commandMapping)) {
-		const command = commandMapping[commandName];
-
-		if (!command.functionDef) {
-			throw Error(
-				`Failed to create command mapping: missing command function for ${commandName}`
-			);
-		}
-
-		if (!command.optDef) {
-			throw Error(
-				`Failed to create command mapping: missing option definition (optDef) for ${commandName}`
-			);
+	for (const [commandName, command] of Object.entries(commandMapping)) {
+		if (!command.functionDef || !command.optDef) {
+			throw Error(`Failed To Initialize Terminal: Invalid Command (${commandName})`);
 		}
 	}
-
 	return commandMapping;
 };
 
-export const isCommandSet = (commandMapping, commandName) => {
+export const isCommandSet = (commandMapping = commands, commandName) => {
 	return commandName in commandMapping;
 };
 
-export const getCommandFn = (commandMapping, commandName) => {
+export const getCommandFn = (commandMapping = commands, commandName) => {
 	if (commandName in commandMapping) {
 		return commandMapping[commandName].functionDef;
 	}
-
 	return undefined;
 };
 
-export const getCommandOptDef = (commandMapping, commandName) => {
+export const getCommandOptDef = (commandMapping = commands, commandName) => {
 	if (commandName in commandMapping) {
 		return commandMapping[commandName].optDef;
 	}
-
 	return undefined;
 };
 
-export const getCommandNames = (commandMapping) => {
+export const getCommandNames = (commandMapping = commands) => {
 	return Object.keys(commandMapping);
 };
 

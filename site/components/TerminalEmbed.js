@@ -10,7 +10,7 @@ const TerminalEmbed = (props, ref) => {
 		for (let form of document.getElementsByTagName("FORM")) {
 			form.setAttribute("spellcheck", "false");
 		}
-	});
+	}, []);
 
 	const customState = EmulatorState.create({
 		fs: files,

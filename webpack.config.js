@@ -63,5 +63,10 @@ module.exports = {
 			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 		})
 	],
+	resolve: {
+		fallback: {
+			fs: false
+		}
+	},
 	stats: "minimal"
 };
