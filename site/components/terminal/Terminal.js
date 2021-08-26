@@ -87,7 +87,7 @@ const Terminal = (props, ref) => {
 	useEffect(() => setOutputs(calculateOutputs()), [input]);
 
 	return (
-		<Grid container direction={"column"} justify={"flex-start"} spacing={1}>
+		<Grid container direction={"column"} justifyContent={"flex-start"} spacing={1}>
 			{outputs}
 			<Grid item key={outputs.length}>
 				<CommandInput

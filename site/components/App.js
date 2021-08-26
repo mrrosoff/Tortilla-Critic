@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Hidden } from "@material-ui/core";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { SnackbarProvider } from "notistack";
@@ -10,7 +10,7 @@ import MobileLayout from "./MobileLayout";
 import DesktopLayout from "./DesktopLayout";
 
 const App = () => {
-	const theme = createMuiTheme({
+	const theme = createTheme({
 		palette: {
 			type: "dark",
 			primary: { main: "#2BC903" },

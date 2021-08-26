@@ -8,7 +8,9 @@ const outputDirectory = "dist";
 module.exports = {
 	entry: "./site/index.js",
 	devServer: {
-		contentBase: path.resolve(__dirname, outputDirectory),
+		static: {
+			directory: path.resolve(__dirname, outputDirectory),
+		},
 		port: 3000,
 		open: true,
 		hot: true,
@@ -57,7 +59,6 @@ module.exports = {
 				image: "https://maxrosoff.com/25924c04cedd27cf36486935c5b0ee7c.jpg"
 			}
 		}),
-		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
 		})

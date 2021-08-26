@@ -15,14 +15,14 @@ const CommandInput = (props, ref) => {
 	});
 
 	return (
-		<Grid container alignContent={"center"} alignItems={"center"} spacing={2}>
+		<Grid container alignItems={"center"} spacing={2}>
 			<Grid item>
 				<PromptSymbol theme={props.theme} {...props}>
 					{props.promptSymbol}
 				</PromptSymbol>
 			</Grid>
 			<Grid item>
-				<Grid container justify={"center"} alignContent={"center"} alignItems={"center"}>
+				<Grid container justifyContent={"center"} alignItems={"center"}>
 					<Grid item>
 						<Typography style={{ whiteSpace: "pre" }}>{props.value}</Typography>
 					</Grid>
