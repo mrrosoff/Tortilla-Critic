@@ -9,7 +9,7 @@ module.exports = {
 	entry: "./site/index.js",
 	devServer: {
 		static: {
-			directory: path.resolve(__dirname, outputDirectory),
+			directory: path.resolve(__dirname, outputDirectory)
 		},
 		port: 3000,
 		open: true,
