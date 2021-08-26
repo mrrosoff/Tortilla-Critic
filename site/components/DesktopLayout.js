@@ -72,7 +72,7 @@ const UserCard = (props) => {
 const Buttons = (props) => {
 	return (
 		<>
-			<LinkButtonWithIcon href={"https://bit.ly/3x5nCbg"}>
+			<LinkButtonWithIcon href={"https://bit.ly/rosoff-resume"}>
 				<Box display={"flex"} alignItems={"center"}>
 					<DescriptionIcon />
 					<Box pl={2}>
