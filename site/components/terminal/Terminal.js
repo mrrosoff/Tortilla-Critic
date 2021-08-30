@@ -16,7 +16,7 @@ const Terminal = (props, ref) => {
 	const [historyIndex, setHistoryIndex] = useState(-1);
 
 	let emulator = new Emulator();
-
+	
 	const onKeyDown = (e) => {
 		switch (e.key) {
 			case "ArrowUp":

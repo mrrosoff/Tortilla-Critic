@@ -21,9 +21,22 @@ export const suggestCommandOptions = (cmdMapping, commandName, partialStr) => {
 export const suggestFileSystemNames = (fs, cwd, partialStr) => {
 	const path = PathUtil.toAbsolutePath(partialStr, cwd);
 	const fsPart = fsSearchAutoComplete(fs, path);
-	return Object.keys(fsPart).filter(
-		(suggestion) =>
-			PathUtil.getLastPathPart(path, false) ===
-			suggestion.substr(0, PathUtil.getLastPathPart(path, false).length)
-	);
+	return Object.keys(fsPart)
+		.filter((suggestion) => {
+			if (partialStr.endsWith("/")) return true;
+			return (
+				PathUtil.getLastPathPart(path, false).toLowerCase() ===
+				suggestion.substr(0, PathUtil.getLastPathPart(path, false).length).toLowerCase()
+			);
+		})
+		.map((suggestion) => {
+			let pathPrefix = PathUtil.toPathParts(partialStr);
+			if (!partialStr.endsWith("/")) {
+				pathPrefix = pathPrefix.slice(0, -1);
+			}
+			if (pathPrefix.join("/")) {
+				return pathPrefix.join("/") + "/" + suggestion;
+			}
+			return suggestion;
+		});
 };

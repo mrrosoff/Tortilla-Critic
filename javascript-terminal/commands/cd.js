@@ -9,6 +9,7 @@ const functionDef = (state, commandOptions) => {
 	const { options, argv } = parseOptions(commandOptions, optDef);
 
 	try {
+		const oldCwdPath = state.getEnvVariables().cwd;
 		const newCwdPath = argv[0] ? relativeToAbsolutePath(state, argv[0]) : "/";
 		const parent = fsSearchParent(state.getFileSystem(), newCwdPath);
 
@@ -21,7 +22,7 @@ const functionDef = (state, commandOptions) => {
 		}
 
 		state.setEnvVariables({ ...state.getEnvVariables(), cwd: newCwdPath });
-		return { output: "", type: "cwd" };
+		return { output: "", type: "cwd", oldCwdPath: oldCwdPath };
 	} catch (err) {
 		return { output: err.message, type: "error" };
 	}

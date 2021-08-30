@@ -6,7 +6,6 @@ export const removeTrailingSeparator = (path) => {
 	if (path.endsWith("/") && path !== "/") {
 		return path.slice(0, -1);
 	}
-
 	return path;
 };
 
@@ -26,20 +25,16 @@ export const toPathParts = (path, shouldRemoveTrailingSeparator = true) => {
 	if (shouldRemoveTrailingSeparator) {
 		path = removeTrailingSeparator(path);
 	}
-	const pathParts = path.split("/");
-
 	if (isAbsolutePath(path)) {
-		return ["/", ...pathParts.slice(1)];
+		return ["/", ...path.split("/").slice(1)];
 	}
-
-	return pathParts;
+	return path.split("/");
 };
 
 export const toPath = (pathParts) => {
 	if (pathParts[0] === "/") {
 		return "/" + pathParts.slice(1).join("/");
 	}
-
 	return pathParts.join("/");
 };
 
@@ -47,7 +42,6 @@ export const getPathParent = (filePath) => {
 	if (filePath === "/") {
 		return "/";
 	}
-
 	const pathParts = toPathParts(filePath);
 	const pathPartsWithoutFileName = pathParts.slice(0, -1);
 	return toPath(pathPartsWithoutFileName);

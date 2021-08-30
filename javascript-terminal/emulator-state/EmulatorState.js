@@ -11,10 +11,7 @@ const COMMAND_MAPPING_KEY = "commandMapping";
 
 export default class EmulatorState {
 	constructor(state) {
-		if (!state) {
-			throw Error("Do not use the constructor directly. Use the static create method.");
-		}
-
+		if (!state) throw Error("Do Not Use Constructor Directly. Use create Method");
 		this.state = state;
 	}
 

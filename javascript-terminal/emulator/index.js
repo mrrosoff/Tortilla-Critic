@@ -8,7 +8,6 @@ export default class Emulator {
 	autocomplete(state, partialStr) {
 		try {
 			const suggestions = this.suggest(state, partialStr);
-			console.log(suggestions);
 			if (suggestions.length > 1) {
 				if (state.getTabCount() === 0) {
 					state.setTabCount(state.getTabCount() + 1);
@@ -49,6 +48,7 @@ export default class Emulator {
 
 		if (
 			strToComplete !== "" &&
+			!strToComplete.endsWith("/") &&
 			Object.keys(
 				fsSearchParent(state.getFileSystem(), PathUtil.toAbsolutePath(strToComplete, cwd))
 			).includes(PathUtil.getLastPathPart(PathUtil.toAbsolutePath(strToComplete, cwd)))
@@ -82,21 +82,17 @@ export default class Emulator {
 			const commandMapping = state.getCommandMapping();
 			const commandArgs = [state, commandOptions];
 
-			const { output: output, type: type = "output" } = this.runCommand(
-				commandMapping,
-				commandName,
-				commandArgs,
-				errorString
-			);
+			const {
+				output: output,
+				type: type = "output",
+				oldCwdPath
+			} = this.runCommand(commandMapping, commandName, commandArgs, errorString);
 
 			if (output || output === "") {
-				const lastCwd =
-					state.getOutputs().length > 0
-						? state.getOutputs()[state.getOutputs().length - 1].cwd
-						: "/";
+				const lastCwd = oldCwdPath ? oldCwdPath : "/";
 				commandResults.push({
 					state,
-					output: { output, type },
+					output: { output, type, oldCwdPath },
 					cwd: type === "cwd" ? lastCwd : undefined
 				});
 			}
