@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from "react";
 
-import { Grid } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import { Emulator } from "../../../javascript-terminal";
 
 import CommandInput from "./CommandInput";
@@ -10,13 +10,14 @@ import OutputText from "./output/OutputText";
 import OutputError from "./output/OutputError";
 
 const Terminal = (props, ref) => {
+	const [showMOTD, setShowMOTD] = useState(true);
 	const [input, setInput] = useState("");
 	const [emulatorState, setEmulatorState] = useState(props.emulatorState);
 	const [outputs, setOutputs] = useState([]);
 	const [historyIndex, setHistoryIndex] = useState(-1);
 
 	let emulator = new Emulator();
-	
+
 	const onKeyDown = (e) => {
 		switch (e.key) {
 			case "ArrowUp":
@@ -62,6 +63,9 @@ const Terminal = (props, ref) => {
 	}
 
 	const calculateOutputs = () => {
+		if (showMOTD && emulatorState.getHistory().includes("clear")) {
+			setShowMOTD(false);
+		}
 		return emulatorState.getOutputs().map((content, key) => (
 			<Grid item key={key} container direction={"column"}>
 				<Grid item>
@@ -86,20 +90,44 @@ const Terminal = (props, ref) => {
 
 	useEffect(() => setOutputs(calculateOutputs()), [input]);
 
+	const MOTDText = `
+		Welcome To Rosoff OS BETA v4.1.2
+			* Documentation: https://github.com/mrrosoff
+			* Management: https://linkedin.com/in/max-rosoff
+			* Support: maxrosoff1@gmail.com
+		0 packages can be updated.
+		0 updates are ready to be installed.
+	`;
+
 	return (
-		<Grid container direction={"column"} justifyContent={"flex-start"} spacing={1}>
-			{outputs}
-			<Grid item key={outputs.length}>
-				<CommandInput
-					ref={ref}
-					value={input}
-					onChange={(e) => setInput(e.target.value)}
-					onKeyDown={onKeyDown}
-					emulatorState={emulatorState}
-					{...props}
-				/>
+		<>
+			{showMOTD && (
+				<>
+					{MOTDText.split("\n").map((line, key) => {
+						return (
+							<Box key={key} display={"flex"}>
+								{line.trim().charAt(0) === "*" && <Box width={20} />}
+								<Box style={{ color: props.theme.outputColor }}>{line.trim()}</Box>
+							</Box>
+						);
+					})}
+					<Box height={20} />
+				</>
+			)}
+			<Grid container direction={"column"} justifyContent={"flex-start"} spacing={1}>
+				{outputs}
+				<Grid item key={outputs.length}>
+					<CommandInput
+						ref={ref}
+						value={input}
+						onChange={(e) => setInput(e.target.value)}
+						onKeyDown={onKeyDown}
+						emulatorState={emulatorState}
+						{...props}
+					/>
+				</Grid>
 			</Grid>
-		</Grid>
+		</>
 	);
 };
 
