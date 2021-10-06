@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect, useImperativeHandle, useRef } from "react
 
 import PromptSymbol from "./PromptSymbol";
 
-import { Grid, InputBase, Typography } from "@material-ui/core";
+import { Grid, InputBase, Typography } from "@mui/material";
 
 const CommandInput = (props, ref) => {
 	useEffect(() => {

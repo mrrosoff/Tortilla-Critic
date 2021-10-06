@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
 
-import FolderIcon from "@material-ui/icons/Folder";
+import FolderIcon from "@mui/icons-material/Folder";
 
 const PromptSymbol = (props) => {
 	return (

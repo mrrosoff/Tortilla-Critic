@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useState } from "react";
 
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@mui/material";
 import { Emulator } from "../../../javascript-terminal";
 
 import CommandInput from "./CommandInput";

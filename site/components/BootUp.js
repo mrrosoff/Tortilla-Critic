@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@mui/material";
 
 import Logo from "../../static/images/logo.png";
 
@@ -32,10 +32,10 @@ const BootUp = (props) => {
 	return (
 		<Grid container direction={"column"} spacing={4}>
 			<Grid item>
-				<Header {...props} />
+				<Header />
 			</Grid>
 			<Grid item>
-				<ReleaseData />
+				<ReleaseData creationDate={props.creationDate} />
 			</Grid>
 			{state >= 1 ? <Grid item>AF6S7V89 - JUC84X</Grid> : null}
 			{state >= 2 ? (
@@ -64,14 +64,14 @@ const BootUp = (props) => {
 
 const Header = (props) => {
 	return (
-		<Grid container spacing={4}>
+        <Grid container spacing={4}>
 			<Grid item>
 				<img src={Logo} alt={"Logo"} style={{ width: 100, height: 100 }} />
 			</Grid>
 			<Grid item>
 				<Grid
 					container
-					justify={"center"}
+					justifyContent={"center"}
 					alignContent={"center"}
 					alignItems={"center"}
 					direction={"column"}
@@ -83,19 +83,14 @@ const Header = (props) => {
 				</Grid>
 			</Grid>
 		</Grid>
-	);
+    );
 };
 
 const ReleaseData = (props) => {
-	const creationDate = new Date();
-	creationDate.setMinutes(creationDate.getMinutes() - 8);
-	creationDate.setHours(creationDate.getHours() - 2);
-	creationDate.setDate(creationDate.getDate() - 5);
-	
 	return (
-		<Grid container justify={"center"} direction={"column"} style={{ height: "100%" }}>
+        <Grid container justifyContent={"center"} direction={"column"} style={{ height: "100%" }}>
 			<Grid item>
-				<Typography>Released: {creationDate.toString()}</Typography>
+				<Typography>Released: {props.creationDate}</Typography>
 			</Grid>
 			<Grid item>
 				<a
@@ -107,7 +102,7 @@ const ReleaseData = (props) => {
 				</a>
 			</Grid>
 		</Grid>
-	);
+    );
 };
 
 const SystemInfo = (props) => {

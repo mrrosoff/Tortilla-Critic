@@ -1,10 +1,8 @@
 import React from "react";
 
-import { Hidden } from "@material-ui/core";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-
-import { SnackbarProvider } from "notistack";
+import { Hidden } from "@mui/material";
+import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import MobileLayout from "./MobileLayout";
 import DesktopLayout from "./DesktopLayout";
@@ -12,24 +10,24 @@ import DesktopLayout from "./DesktopLayout";
 const App = () => {
 	const theme = createTheme({
 		palette: {
-			type: "dark",
+			mode: "dark",
 			primary: { main: "#2BC903" },
 			secondary: { main: "#0B8AAD" }
 		}
 	});
 
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<SnackbarProvider maxSnack={3} preventDuplicate>
+		<StyledEngineProvider injectFirst>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<Hidden mdUp>
 					<MobileLayout />
 				</Hidden>
-				<Hidden smDown>
+				<Hidden mdDown>
 					<DesktopLayout />
 				</Hidden>
-			</SnackbarProvider>
-		</ThemeProvider>
+			</ThemeProvider>
+		</StyledEngineProvider>
 	);
 };
 

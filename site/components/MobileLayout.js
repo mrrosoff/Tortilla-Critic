@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Avatar, Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Avatar, Grid } from "@mui/material";
+import makeStyles from '@mui/styles/makeStyles';
 
 import Profile from "../../static/images/profile.jpg";
 import SocialButton, { SocialList } from "./SocialButtons";
@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
 const MobileLayout = (props) => {
 	const classes = useStyles();
 	return (
-		<Grid
+        <Grid
 			container
 			direction={"column"}
 			style={{ width: "100vw", height: "100vh" }}
-			justify={"center"}
+			justifyContent={"center"}
 			alignItems={"center"}
 			alignContent={"center"}
 		>
@@ -29,7 +29,7 @@ const MobileLayout = (props) => {
 				container
 				direction={"column"}
 				spacing={6}
-				justify={"center"}
+				justifyContent={"center"}
 				alignItems={"center"}
 				alignContent={"center"}
 			>
@@ -41,7 +41,7 @@ const MobileLayout = (props) => {
 						container
 						direction={"column"}
 						spacing={1}
-						justify={"center"}
+						justifyContent={"center"}
 						alignItems={"center"}
 						alignContent={"center"}
 					>
@@ -54,7 +54,7 @@ const MobileLayout = (props) => {
 				</Grid>
 			</Grid>
 		</Grid>
-	);
+    );
 };
 
 export default MobileLayout;
