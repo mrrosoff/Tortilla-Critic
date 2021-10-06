@@ -103,6 +103,10 @@ const functionDef = (state, commandOptions) => {
 						"     of files contained within that directory, as well as any requested, associated\n" +
 						"     information."
 				};
+			default:
+				return {
+					output: ""
+				};
 		}
 	} catch (err) {
 		return { output: err.message, type: "error" };
