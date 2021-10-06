@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { Avatar, Box, Grid, Paper } from "@mui/material";
-import CodeIcon from "@mui/icons-material/Code";
+import { Avatar, Box, Paper } from "@mui/material";
 
 import SocialButtonList from "./SocialButtons";
 

@@ -19,7 +19,9 @@ export const write = (fs, path, file) => {
 export const copy = (fs, srcPath, destPath) => {
 	const fsPart = fsSearchParent(fs, srcPath);
 
-	if (!fsPart[getLastPathPart(path)] || fsPart[getLastPathPart(srcPath)].type !== "-") {
+	console.log(fsPart);
+
+	if (!fsPart[getLastPathPart(srcPath)] || fsPart[getLastPathPart(srcPath)].type !== "-") {
 		throw Error("Not A File At Specified Path: " + srcPath);
 	}
 
