@@ -124,12 +124,10 @@ const Terminal = (props, ref) => {
 									{front}
 									<a
 										href={middle}
+										target="_blank"
 										style={{
-											margin: 0,
 											color: "#FCFCFC",
-											fontSize: 20,
-											textDecorationColor: "#FCFCFC",
-											cursor: "pointer"
+											fontSize: 20
 										}}
 									>
 										{middle}

@@ -72,7 +72,7 @@ const LinksAndMenu = () => {
 	);
 };
 
-const Links = props => {
+const Links = (props) => {
 	return (
 		<Box sx={{ position: "absolute", top: 0, right: 80, display: "flex" }}>
 			<a
@@ -83,13 +83,7 @@ const Links = props => {
 				Source
 			</a>
 			<a
-				style={{
-					margin: 0,
-					color: "#FCFCFC",
-					fontSize: 20,
-					textDecorationColor: "#FCFCFC",
-					cursor: "pointer"
-				}}
+				style={{ margin: 0, color: "#FCFCFC", fontSize: 20 }}
 				onClick={() => props.setOpen(!props.open)}
 			>
 				More

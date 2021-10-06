@@ -11,8 +11,7 @@ export const files = {
 						type: "-",
 						permissions: "rwx------",
 						contents: `
-							Welcome To My Website!
-						
+							Hello World!
 						`
 					}
 				}
