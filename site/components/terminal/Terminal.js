@@ -92,8 +92,8 @@ const Terminal = (props, ref) => {
 
 	const MOTDText = `
 		Welcome To Rosoff OS BETA v4.1.2
-			* Documentation: https://github.com/mrrosoff
-			* Management: https://linkedin.com/in/max-rosoff
+			* Documentation: ~https://github.com/mrrosoff~
+			* Management: ~https://linkedin.com/in/max-rosoff~
 			* Support: maxrosoff1@gmail.com
 		0 packages can be updated.
 		0 updates are ready to be installed.
@@ -104,10 +104,43 @@ const Terminal = (props, ref) => {
 			{showMOTD && (
 				<>
 					{MOTDText.split("\n").map((line, key) => {
+						const trimmedLine = line.trim();
+						const outputs = [
+							<Box key={"original-line"} style={{ color: props.theme.outputColor }}>
+								{trimmedLine}
+							</Box>
+						];
+						if (trimmedLine.charAt(0) === "*") {
+							outputs.splice(0, 0, <Box key={"indent"} width={20} />);
+						}
+						const index = trimmedLine.indexOf("~");
+						if (index !== -1) {
+							const front = trimmedLine.substring(0, index);
+							const backIndex = trimmedLine.indexOf("~", index + 1);
+							const middle = trimmedLine.substring(index + 1, backIndex);
+							const back = trimmedLine.substring(backIndex + 1);
+							outputs[outputs.length - 1] = (
+								<Box key={"link-line"} style={{ color: props.theme.outputColor }}>
+									{front}
+									<a
+										href={middle}
+										style={{
+											margin: 0,
+											color: "#FCFCFC",
+											fontSize: 20,
+											textDecorationColor: "#FCFCFC",
+											cursor: "pointer"
+										}}
+									>
+										{middle}
+									</a>
+									{back}
+								</Box>
+							);
+						}
 						return (
 							<Box key={key} display={"flex"}>
-								{line.trim().charAt(0) === "*" && <Box width={20} />}
-								<Box style={{ color: props.theme.outputColor }}>{line.trim()}</Box>
+								{outputs}
 							</Box>
 						);
 					})}

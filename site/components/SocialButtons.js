@@ -9,117 +9,74 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
-export const SocialList = ["Resume", "GitHub", "LinkedIn", "Facebook", "Instagram", "Twitter"];
-
-export const SocialButton = (props) => {
-	switch (props.socialName) {
-		case "Resume":
-			return <ResumeButton />;
-		case "GitHub":
-			return <GitHubButton />;
-		case "LinkedIn":
-			return <LinkedInButton />;
-		case "Facebook":
-			return <FacebookButton />;
-		case "Instagram":
-			return <InstagramButton />;
-		case "Twitter":
-			return <TwitterButton />;
+export const SocialList = [
+	{
+		name: "Resume",
+		url: "https://bit.ly/rosoff-resume",
+		icon: DescriptionIcon
+	},
+	{
+		name: "LinkedIn",
+		url: "https://www.linkedin.com/in/max-rosoff",
+		icon: LinkedInIcon
+	},
+	{
+		name: "GitHub",
+		url: "https://www.github.com/mrrosoff",
+		icon: GitHubIcon
+	},
+	{
+		name: "Facebook",
+		url: "https://www.facebook.com/maxr.rosoff",
+		icon: FacebookIcon
+	},
+	{
+		name: "Instagram",
+		url: "https://www.instagram.com/thenameismr.r/",
+		icon: InstagramIcon
+	},
+	{
+		name: "Twitter",
+		url: "https://twitter.com/MrRosoff",
+		icon: TwitterIcon
 	}
-	return null;
-};
+];
 
-export const ResumeButton = () => {
+export const SocialButtonList = (props) => {
 	return (
-		<LinkButtonWithIcon href={"https://bit.ly/rosoff-resume"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<DescriptionIcon />
-				<Box pl={2}>
-					<Typography>Resume</Typography>
+		<Box p={2} display={"flex"} flexWrap={"wrap"}>
+			{SocialList.map((socialDetails, index) => (
+				<Box key={index} mr={1}>
+					<SocialButton
+						href={socialDetails.URL}
+						icon={socialDetails.icon}
+						text={socialDetails.name}
+					/>
 				</Box>
-			</Box>
-		</LinkButtonWithIcon>
+			))}
+		</Box>
 	);
 };
 
-export const GitHubButton = () => {
-	return (
-		<LinkButtonWithIcon href={"https://www.github.com/mrrosoff"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<GitHubIcon />
-				<Box pl={2}>
-					<Typography>GitHub</Typography>
-				</Box>
-			</Box>
-		</LinkButtonWithIcon>
-	);
-};
-
-export const LinkedInButton = () => {
-	return (
-		<LinkButtonWithIcon href={"https://www.linkedin.com/in/max-rosoff"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<LinkedInIcon />
-				<Box pl={2}>
-					<Typography>LinkedIn</Typography>
-				</Box>
-			</Box>
-		</LinkButtonWithIcon>
-	);
-};
-
-export const FacebookButton = () => {
-	return (
-		<LinkButtonWithIcon href={"https://www.facebook.com/maxr.rosoff"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<FacebookIcon />
-				<Box pl={2}>
-					<Typography>Facebook</Typography>
-				</Box>
-			</Box>
-		</LinkButtonWithIcon>
-	);
-};
-
-export const InstagramButton = () => {
-	return (
-		<LinkButtonWithIcon href={"https://www.instagram.com/thenameismr.r/"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<InstagramIcon />
-				<Box pl={2}>
-					<Typography>Instagram</Typography>
-				</Box>
-			</Box>
-		</LinkButtonWithIcon>
-	);
-};
-
-export const TwitterButton = () => {
-	return (
-		<LinkButtonWithIcon href={"https://twitter.com/MrRosoff"}>
-			<Box display={"flex"} alignItems={"center"}>
-				<TwitterIcon />
-				<Box pl={2}>
-					<Typography>Twitter</Typography>
-				</Box>
-			</Box>
-		</LinkButtonWithIcon>
-	);
-};
-
-const LinkButtonWithIcon = (props) => {
+const SocialButton = (props) => {
+	const Icon = props.icon;
 	return (
 		<Button
+			className={"social-button"}
 			href={props.href}
 			target={"_blank"}
 			rel={"noopener"}
-			className={props.className ? props.className : ""}
-			startIcon={props.icon}
 			size={"large"}
+			{...props}
 		>
-			{props.children}
+			<Box sx={{ display: "flex", alignItems: "center", color: "white" }}>
+				<Icon />
+				<Box pl={2}>
+					<Typography>{props.text}</Typography>
+				</Box>
+			</Box>
 		</Button>
 	);
 };
 
-export default SocialButton;
+export default SocialButtonList;

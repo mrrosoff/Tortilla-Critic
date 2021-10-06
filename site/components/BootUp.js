@@ -64,7 +64,7 @@ const BootUp = (props) => {
 
 const Header = (props) => {
 	return (
-        <Grid container spacing={4}>
+		<Grid container spacing={4}>
 			<Grid item>
 				<img src={Logo} alt={"Logo"} style={{ width: 100, height: 100 }} />
 			</Grid>
@@ -83,12 +83,12 @@ const Header = (props) => {
 				</Grid>
 			</Grid>
 		</Grid>
-    );
+	);
 };
 
 const ReleaseData = (props) => {
 	return (
-        <Grid container justifyContent={"center"} direction={"column"} style={{ height: "100%" }}>
+		<Grid container justifyContent={"center"} direction={"column"} style={{ height: "100%" }}>
 			<Grid item>
 				<Typography>Released: {props.creationDate}</Typography>
 			</Grid>
@@ -102,7 +102,7 @@ const ReleaseData = (props) => {
 				</a>
 			</Grid>
 		</Grid>
-    );
+	);
 };
 
 const SystemInfo = (props) => {
@@ -110,7 +110,7 @@ const SystemInfo = (props) => {
 		<Grid container direction={"column"} style={{ paddingLeft: 20 }}>
 			{props.state >= 3 ? (
 				<Grid item>
-					<Box pl={1} pr={1}>
+					<Box sx={{ pl: 1, pr: 1 }}>
 						<Grid container spacing={2}>
 							<Grid item>
 								<Typography>User:</Typography>
@@ -124,7 +124,7 @@ const SystemInfo = (props) => {
 			) : null}
 			{props.state >= 4 ? (
 				<Grid item>
-					<Box pl={1} pr={1}>
+					<Box sx={{ pl: 1, pr: 1 }}>
 						<Grid container spacing={2}>
 							<Grid item>
 								<Typography>Device Name:</Typography>
@@ -138,7 +138,7 @@ const SystemInfo = (props) => {
 			) : null}
 			{props.state >= 5 ? (
 				<Grid item>
-					<Box pl={1} pr={1}>
+					<Box sx={{ pl: 1, pr: 1 }}>
 						<Grid container spacing={2}>
 							<Grid item>
 								<Typography>Memory Test:</Typography>
