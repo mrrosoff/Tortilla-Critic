@@ -48,7 +48,7 @@ export const SocialButtonList = (props) => {
 			{SocialList.map((socialDetails, index) => (
 				<Box key={index} mr={1}>
 					<SocialButton
-						href={socialDetails.URL}
+						href={socialDetails.url}
 						icon={socialDetails.icon}
 						text={socialDetails.name}
 					/>
