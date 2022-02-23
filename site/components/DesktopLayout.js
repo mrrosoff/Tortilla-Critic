@@ -10,7 +10,7 @@ import BootUp from "./BootUp";
 import TerminalEmbed from "./TerminalEmbed";
 
 const DesktopLayout = (props) => {
-	const [bootingUp, setBootingUp] = useState(process.env.NODE_ENV !== "development");
+	const [bootingUp, setBootingUp] = useState(!IS_DEVELOPMENT);
 
 	let inputRef = useRef(null);
 

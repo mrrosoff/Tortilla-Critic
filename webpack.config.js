@@ -1,8 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const outputDirectory = "dist";
+const mode = process.env.NODE_ENV || "development";
 
 module.exports = {
 	entry: "./site/index.js",
@@ -16,7 +18,7 @@ module.exports = {
 		historyApiFallback: true
 	},
 	devtool: "eval-source-map",
-	mode: process.env.NODE_ENV || "development",
+	mode: mode,
 	module: {
 		rules: [
 			{
@@ -57,9 +59,7 @@ module.exports = {
 				image: "https://maxrosoff.com/25924c04cedd27cf36486935c5b0ee7c.jpg"
 			}
 		}),
-		new webpack.DefinePlugin({
-			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || "development")
-		})
+		new webpack.DefinePlugin({ IS_DEVELOPMENT: mode === "development" })
 	],
 	resolve: {
 		fallback: {
