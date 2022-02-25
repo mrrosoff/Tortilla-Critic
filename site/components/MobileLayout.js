@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Avatar, Grid } from "@mui/material";
 import makeStyles from '@mui/styles/makeStyles';
 

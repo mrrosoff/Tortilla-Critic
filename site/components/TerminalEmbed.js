@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 
 import { CommandMapping, DefaultCommandMapping, EmulatorState } from "../../javascript-terminal";
 

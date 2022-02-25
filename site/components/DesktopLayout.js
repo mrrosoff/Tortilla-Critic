@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { Avatar, Box, Paper } from "@mui/material";
 
@@ -10,7 +10,7 @@ import BootUp from "./BootUp";
 import TerminalEmbed from "./TerminalEmbed";
 
 const DesktopLayout = (props) => {
-	const [bootingUp, setBootingUp] = useState(!IS_DEVELOPMENT);
+	const [bootingUp, setBootingUp] = useState(process.env.NODE_ENV === "production");
 
 	let inputRef = useRef(null);
 

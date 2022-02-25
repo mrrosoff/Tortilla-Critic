@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Grid, Typography } from "@mui/material";
 
 import FolderIcon from "@mui/icons-material/Folder";
