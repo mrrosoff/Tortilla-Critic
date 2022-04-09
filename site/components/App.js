@@ -2,8 +2,8 @@ import { Hidden } from "@mui/material";
 import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import MobileLayout from "./MobileLayout";
-import DesktopLayout from "./DesktopLayout";
+import MobileLayout from "./app/MobileLayout";
+import DesktopLayout from "./app/DesktopLayout";
 
 const App = () => {
 	const theme = createTheme({

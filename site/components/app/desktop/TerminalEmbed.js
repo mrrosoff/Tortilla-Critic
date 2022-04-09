@@ -1,9 +1,9 @@
 import { forwardRef, useEffect } from "react";
 
-import { CommandMapping, DefaultCommandMapping, EmulatorState } from "../../javascript-terminal";
+import { CommandMapping, DefaultCommandMapping, EmulatorState } from "../../../../javascript-terminal";
 
-import Terminal from "./terminal/Terminal";
-import { files } from "../FileSystem";
+import Terminal from "../../terminal/Terminal";
+import { files } from "../../../FileSystem";
 
 const TerminalEmbed = (props, ref) => {
 	useEffect(() => {

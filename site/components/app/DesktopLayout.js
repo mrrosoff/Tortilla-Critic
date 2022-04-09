@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 
 import { Avatar, Box, Paper } from "@mui/material";
 
-import { SocialButtonList } from "./SocialButtons";
+import { DesktopSocialButtonList } from "./SocialButtons";
 
-import Profile from "../../static/images/profile.jpg";
+import Profile from "../../../static/images/profile.jpg";
 
-import BootUp from "./BootUp";
-import TerminalEmbed from "./TerminalEmbed";
+import BootUp from "./desktop/BootUp";
+import TerminalEmbed from "./desktop/TerminalEmbed";
 
 const DesktopLayout = (props) => {
 	const [bootingUp, setBootingUp] = useState(process.env.NODE_ENV === "production");
@@ -49,7 +49,7 @@ const LinksAndMenu = () => {
 			<Box sx={{ position: "absolute", top: 65, right: 0 }}>
 				{open && (
 					<Paper style={{ width: 310 }}>
-						<SocialButtonList />
+						<DesktopSocialButtonList />
 					</Paper>
 				)}
 			</Box>

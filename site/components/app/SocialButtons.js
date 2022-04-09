@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
 import DescriptionIcon from "@mui/icons-material/Description";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -7,7 +7,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
-export const SocialList = [
+const SocialList = [
 	{
 		name: "Resume",
 		url: "https://bit.ly/rosoff-resume",
@@ -40,7 +40,7 @@ export const SocialList = [
 	}
 ];
 
-export const SocialButtonList = (props) => {
+export const DesktopSocialButtonList = (props) => {
 	return (
 		<Box p={2} display={"flex"} flexWrap={"wrap"}>
 			{SocialList.map((socialDetails, index) => (
@@ -56,7 +56,30 @@ export const SocialButtonList = (props) => {
 	);
 };
 
-export const SocialButton = (props) => {
+export const MobileSocialButtonList = (props) => {
+	return (
+		<Grid
+			container
+			direction={"column"}
+			spacing={1}
+			justifyContent={"center"}
+			alignItems={"center"}
+			alignContent={"center"}
+		>
+			{SocialList.map((socialDetails, index) => (
+				<Grid item key={index}>
+					<SocialButton
+						href={socialDetails.url}
+						icon={socialDetails.icon}
+						text={socialDetails.name}
+					/>
+				</Grid>
+			))}
+		</Grid>
+	);
+};
+
+const SocialButton = (props) => {
 	const Icon = props.icon;
 	return (
 		<Button

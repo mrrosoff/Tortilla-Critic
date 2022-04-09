@@ -94,7 +94,7 @@ const Terminal = (props, ref) => {
 		Welcome To Rosoff OS BETA v4.1.2
 			* Documentation: ~https://github.com/mrrosoff~
 			* Management: ~https://linkedin.com/in/max-rosoff~
-			* Support: maxrosoff1@gmail.com
+			* Support: me@maxrosoff.com
 		0 packages can be updated.
 		0 updates are ready to be installed.
 	`;
