@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import { Avatar, Box, Paper } from "@mui/material";
 
-import SocialButtonList from "./SocialButtons";
+import { SocialButtonList } from "./SocialButtons";
 
 import Profile from "../../static/images/profile.jpg";
 

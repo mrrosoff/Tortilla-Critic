@@ -1,8 +1,8 @@
 import { Avatar, Grid } from "@mui/material";
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from "@mui/styles/makeStyles";
 
 import Profile from "../../static/images/profile.jpg";
-import SocialButton, { SocialList } from "./SocialButtons";
+import { SocialButton, SocialList } from "./SocialButtons";
 
 const useStyles = makeStyles((theme) => ({
 	largeAvatar: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 const MobileLayout = (props) => {
 	const classes = useStyles();
 	return (
-        <Grid
+		<Grid
 			container
 			direction={"column"}
 			style={{ width: "100vw", height: "100vh" }}
@@ -43,16 +43,20 @@ const MobileLayout = (props) => {
 						alignItems={"center"}
 						alignContent={"center"}
 					>
-						{SocialList.map((socialName, index) => (
+						{SocialList.map((socialDetails, index) => (
 							<Grid item key={index}>
-								<SocialButton socialName={socialName} />
+								<SocialButton
+									href={socialDetails.url}
+									icon={socialDetails.icon}
+									text={socialDetails.name}
+								/>
 							</Grid>
 						))}
 					</Grid>
 				</Grid>
 			</Grid>
 		</Grid>
-    );
+	);
 };
 
 export default MobileLayout;

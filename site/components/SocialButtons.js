@@ -56,7 +56,7 @@ export const SocialButtonList = (props) => {
 	);
 };
 
-const SocialButton = (props) => {
+export const SocialButton = (props) => {
 	const Icon = props.icon;
 	return (
 		<Button
@@ -76,5 +76,3 @@ const SocialButton = (props) => {
 		</Button>
 	);
 };
-
-export default SocialButtonList;
