@@ -1,10 +1,10 @@
-# Personal-Website
+# Tortilla Critic
 
-### My Personal Website
+### A Chip Lover's Rankings
 
 ## About Project
 
-This site is built using React.js. The site is hosted on GitHub Pages and links to [my custom domain](maxrosoff.com).
+This site is built using React.js. The site is hosted on GitHub Pages and links to [my custom domain](tortillacritic.com).
 
 ## Installation
 

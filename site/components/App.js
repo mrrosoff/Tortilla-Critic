@@ -1,9 +1,7 @@
-import { Hidden } from "@mui/material";
 import { createTheme, ThemeProvider, StyledEngineProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
-import MobileLayout from "./app/MobileLayout";
-import DesktopLayout from "./app/DesktopLayout";
+import Layout from "./Layout";
 
 const App = () => {
 	const theme = createTheme({
@@ -18,12 +16,7 @@ const App = () => {
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<Hidden mdUp>
-					<MobileLayout />
-				</Hidden>
-				<Hidden mdDown>
-					<DesktopLayout />
-				</Hidden>
+				<Layout />
 			</ThemeProvider>
 		</StyledEngineProvider>
 	);
