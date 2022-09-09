@@ -1,6 +1,6 @@
-# Personal-Website
+# Tortilla-Critic
 
-### My Personal Website
+### A Chip Lover's Rankings
 
 ## About Project
 
