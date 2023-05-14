@@ -11,6 +11,9 @@ import RedStar from "./reviews/redstar";
 
 export interface RestaurantReview {
     restaurantName: string;
+    website: string;
+    location: string;
+    cost: number;
     rating: number;
     summary: string;
     fullReview: string;

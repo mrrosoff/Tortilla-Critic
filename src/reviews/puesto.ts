@@ -2,9 +2,13 @@ import { RestaurantReview } from "../reviews";
 
 const Puesto: RestaurantReview = {
     restaurantName: "Puesto",
+    website: "https://www.eatpuesto.com/",
+    location: "789 West Harbor Drive, San Diego, CA 92101",
+    cost: 9,
     rating: 10,
-    summary: "A flavorful explosion in the mouth, with just the right amount of spice.",
-    fullReview: "Great food, great service, great ambiance"
+    summary: "A delightfully structured chip experience.",
+    fullReview: `When I first bit into a chip at Puesto, I was immediatly overcome with nostalgia
+    and `
 };
 
 export default Puesto;

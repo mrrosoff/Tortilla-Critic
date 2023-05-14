@@ -13,14 +13,10 @@ const App = () => {
         typography: {
             fontFamily: "Carlito, sans-serif",
             h1: {
-                fontFamily: "Lobster, cursive",
-                fontSize: 120
-            },
-            h2: {
-                fontFamily: "Lobster, cursive"
+                fontSize: 120,
+                fontWeight: 800
             },
             h3: {
-                fontFamily: "Lobster, cursive",
                 fontSize: 38
             },
             h4: {
