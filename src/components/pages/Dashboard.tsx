@@ -2,20 +2,15 @@ import { useNavigate } from "react-router-dom";
 
 import { Box, Grid, Rating, Typography } from "@mui/material";
 
-import reviews from "../../reviews/reviews";
+import reviews from "../../reviews";
 
 const Dashboard = () => {
     return (
-        <Box width={"100vw"} height={"100vh"} p={6}>
-            <Typography variant={"h4"}>Tortilla Critic</Typography>
-            <Box pt={4}>
-                <Grid container spacing={3}>
-                    {reviews.map((review, index) => {
-                        return <ReviewCard key={index} review={review} />;
-                    })}
-                </Grid>
-            </Box>
-        </Box>
+        <Grid container spacing={3}>
+            {reviews.map((review, index) => {
+                return <ReviewCard key={index} review={review} />;
+            })}
+        </Grid>
     );
 };
 

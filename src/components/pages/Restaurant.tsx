@@ -1,19 +1,24 @@
 import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 
-import reviews from "../../reviews/reviews";
+import reviews from "../../reviews";
 
 const Restaurant = () => {
     const { restaurant } = useParams();
     return (
-        <Box width={"100vw"} height={"100vh"} p={6}>
-            <Typography variant={"h4"}>{restaurant}</Typography>
-            <Box pt={4}>
-                {reviews.find((item) => item.restaurantName === restaurant)!!.summary}
+        <Box display={"flex"}>
+            <Box width={"50%"} display={"flex"} flexDirection={"column"}>
+                <Typography variant={"h1"} style={{}}>
+                    {restaurant}
+                </Typography>
+                <Typography variant={"h4"} style={{}}>
+                    {reviews.find((item) => item.restaurantName === restaurant)!!.summary}
+                </Typography>
+                <Typography>
+                    {reviews.find((item) => item.restaurantName === restaurant)!!.fullReview}
+                </Typography>
             </Box>
-            <Box pt={4}>
-                {reviews.find((item) => item.restaurantName === restaurant)!!.fullReview}
-            </Box>
+            <Box pl={8}>images</Box>
         </Box>
     );
 };

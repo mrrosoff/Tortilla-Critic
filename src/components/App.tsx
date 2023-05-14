@@ -9,6 +9,23 @@ const App = () => {
             mode: "dark",
             primary: { main: "#2BC903" },
             secondary: { main: "#0B8AAD" }
+        },
+        typography: {
+            fontFamily: "Carlito, sans-serif",
+            h1: {
+                fontFamily: "Lobster, cursive",
+                fontSize: 120
+            },
+            h2: {
+                fontFamily: "Lobster, cursive"
+            },
+            h3: {
+                fontFamily: "Lobster, cursive",
+                fontSize: 38
+            },
+            h4: {
+                fontSize: 30
+            }
         }
     });
 
