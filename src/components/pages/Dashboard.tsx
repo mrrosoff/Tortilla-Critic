@@ -1,8 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import {
+    Autocomplete,
     Box,
+    Button,
+    Card,
+    CardActionArea,
+    CardActions,
+    CardContent,
     Chip,
-    Grid,
+    Unstable_Grid2 as Grid,
     IconButton,
     InputBase,
     Paper,
@@ -10,26 +16,27 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import { Search } from "@mui/icons-material";
-import reviews from "../../reviews";
+import { LocationOn, Search } from "@mui/icons-material";
+import reviews, { RestaurantReview } from "../../reviews";
+import { useState } from "react";
 
 const Layout = () => {
     const theme = useTheme();
     const navigate = useNavigate();
+
+    const [shownReviews, setShownReviews] = useState(reviews);
+
     return (
-        <Box width={"100vw"} height={"100vh"} p={5} display={"flex"} flexDirection={"column"}>
-            <Box display={"flex"} justifyContent={"space-between"}>
-                <SearchBox />
-                <Box pl={8} sx={{ cursor: "pointer" }} onClick={() => navigate("/")}>
-                    <Typography variant={"h3"} fontFamily={"Lobster, cursive"}>
-                        Tortilla Critic
-                    </Typography>
-                </Box>
-            </Box>
+        <Box p={5} display={"flex"} flexDirection={"column"}>
+            <SearchBox shownReviews={shownReviews} setShownReviews={setShownReviews} />
             <Box mt={5} mb={5} overflow={"hidden"} sx={{ overflowY: "scroll" }}>
-                <Grid container spacing={3}>
-                    {reviews.map((review, index) => {
-                        return <ReviewCard key={index} review={review} />;
+                <Grid container spacing={2}>
+                    {shownReviews.map((review, index) => {
+                        return (
+                            <Grid key={index}>
+                                <ReviewCard review={review} />
+                            </Grid>
+                        );
                     })}
                 </Grid>
             </Box>
@@ -39,23 +46,36 @@ const Layout = () => {
                 right={theme.spacing(3)}
                 display={"flex"}
             >
-                <Typography onClick={() => {}}>Source</Typography>
-                <Typography sx={{ pl: 2 }} onClick={() => {}}>
-                    Max Rosoff
+                <Typography
+                    sx={{
+                        pl: 0.5,
+                        fontSize: 12,
+                        fontWeight: 800,
+                        cursor: "pointer"
+                    }}
+                    onClick={() => (window.location.href = "https://maxrosoff.com")}
+                >
+                    more by Max Rosoff
                 </Typography>
             </Box>
         </Box>
     );
 };
 
-const SearchBox = () => {
+const SearchBox = (props: { shownReviews: any[]; setShownReviews: Function }) => {
     return (
-        <Box flexGrow={1} display={"flex"} flexDirection={"column"}>
+        <Box maxWidth={"80%"} display={"flex"} flexDirection={"column"}>
             <Box display={"flex"} alignItems={"center"} border={1} borderRadius={10}>
                 <IconButton sx={{ p: 1.2, pl: 3, pr: 3 }}>
                     <Search />
                 </IconButton>
-                <InputBase fullWidth placeholder="Search" />
+                <Autocomplete
+                    sx={{ pr: 3 }}
+                    fullWidth
+                    options={reviews}
+                    getOptionLabel={(option: RestaurantReview) => option.restaurantName}
+                    renderInput={(params: any) => <InputBase {...params} placeholder={"Search"} />}
+                />
             </Box>
             <Box pt={1.5} display="flex">
                 <Chip
@@ -86,27 +106,32 @@ const SearchBox = () => {
 const ReviewCard = (props: { review: any }) => {
     const navigate = useNavigate();
     return (
-        <Grid item>
-            <Box
-                border={1}
-                borderRadius={1}
-                width={325}
-                height={200}
-                p={2}
+        <Card variant="outlined" sx={{ minWidth: 350, maxWidth: 400 }}>
+            <CardActionArea
                 onClick={() => navigate("/" + props.review.restaurantName.toLowerCase())}
             >
-                <Box display={"flex"} justifyContent={"space-between"}>
-                    <Typography variant={"h5"}>{props.review.restaurantName}</Typography>
+                <CardContent>
+                    <Typography gutterBottom variant="h4" sx={{ fontSize: 22, fontWeight: 800 }}>
+                        {props.review.restaurantName}
+                    </Typography>
+                    <Box color={"grey.500"} display={"flex"} alignItems={"center"} mb={1}>
+                        <LocationOn sx={{ fontSize: 15 }} />
+                        <Typography sx={{ ml: 0.8, fontSize: 15 }}>
+                            {props.review.location}
+                        </Typography>
+                    </Box>
                     <Rating
                         defaultValue={props.review.rating / 2}
                         size={"small"}
                         precision={0.5}
                         readOnly
                     />
-                </Box>
-                <Typography pt={1}>{props.review.summary}</Typography>
-            </Box>
-        </Grid>
+                    <Typography variant="body2" color="text.secondary">
+                        {props.review.summary}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
     );
 };
 

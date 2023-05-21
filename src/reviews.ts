@@ -1,35 +1,42 @@
-import AquaVerde from "./reviews/aquaverde";
-import ElTecho from "./reviews/eltecho";
-import Fogon from "./reviews/fogon";
-import Frontera from "./reviews/frontera";
-import Fuego from "./reviews/fuego";
-import Gracia from "./reviews/gracia";
-import Hatch from "./reviews/hatch";
-import Matador from "./reviews/matador";
-import Puesto from "./reviews/puesto";
-import RedStar from "./reviews/redstar";
+import aquaVerde from "./reviews/aquaverde";
+import bocas from "./reviews/bocas";
+import elTecho from "./reviews/eltecho";
+import fogon from "./reviews/fogon";
+import frontera from "./reviews/frontera";
+import fuego from "./reviews/fuego";
+import gracia from "./reviews/gracia";
+import hatch from "./reviews/hatch";
+import matador from "./reviews/matador";
+import puesto from "./reviews/puesto";
+import redStar from "./reviews/redstar";
+import theLawn from "./reviews/thelawn";
 
 export interface RestaurantReview {
     restaurantName: string;
-    website: string;
+    website?: string;
     location: string;
+    address: string;
     cost: number;
     rating: number;
     summary: string;
     fullReview: string;
+    coverImage: string;
+    images: any[];
 }
 
 const reviews: RestaurantReview[] = [
-    AquaVerde,
-    ElTecho,
-    Fogon,
-    Frontera,
-    Fuego,
-    Gracia,
-    Hatch,
-    Matador,
-    Puesto,
-    RedStar
+    aquaVerde,
+    bocas,
+    elTecho,
+    fogon,
+    frontera,
+    fuego,
+    gracia,
+    hatch,
+    matador,
+    puesto,
+    redStar,
+    theLawn
 ];
 
 export default reviews;
