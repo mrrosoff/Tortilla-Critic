@@ -2,16 +2,13 @@ import { useNavigate } from "react-router-dom";
 import {
     Autocomplete,
     Box,
-    Button,
     Card,
     CardActionArea,
-    CardActions,
     CardContent,
     Chip,
     Unstable_Grid2 as Grid,
     IconButton,
     InputBase,
-    Paper,
     Rating,
     Typography,
     useTheme

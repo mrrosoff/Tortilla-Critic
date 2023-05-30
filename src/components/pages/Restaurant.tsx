@@ -50,18 +50,23 @@ const Restaurant = () => {
                         ml={1}
                         fontSize={20}
                         sx={{ cursor: "pointer" }}
-                        onClick={() => (window.location.href = restaurantDetails.address)}
+                        onClick={() =>
+                            (window.location.href = restaurantDetails.contactInformation.address)
+                        }
                     >
                         {restaurantDetails.location}
                     </Typography>
-                    {restaurantDetails.website && (
+                    {restaurantDetails.contactInformation.website && (
                         <>
                             <Typography ml={4} fontSize={20}>
                                 Website
                             </Typography>
                             <OpenInNewIcon
                                 sx={{ ml: 1, fontSize: 20, cursor: "pointer" }}
-                                onClick={() => (window.location.href = restaurantDetails.website!!)}
+                                onClick={() =>
+                                    (window.location.href =
+                                        restaurantDetails.contactInformation.website!!)
+                                }
                             />
                         </>
                     )}
@@ -82,7 +87,7 @@ const Restaurant = () => {
                 src={restaurantDetails.coverImage}
                 style={{
                     position: "absolute",
-                    opacity: 0.35,
+                    opacity: 0.25,
                     top: 0,
                     left: 0,
                     width: "100%",

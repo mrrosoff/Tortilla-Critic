@@ -14,13 +14,17 @@ import tonito from "./reviews/tonito";
 
 export interface RestaurantReview {
     restaurantName: string;
-    website?: string;
     location: string;
-    address: string;
-    cost: number;
     rating: number;
+    cost: number;
     summary: string;
     fullReview: string;
+    contactInformation: {
+        address: string;
+        website?: string;
+        phoneNumber?: string;
+        email?: string;
+    };
     coverImage: string;
     images: any[];
 }

@@ -3,10 +3,8 @@ import { RestaurantReview } from "../reviews";
 const bocas: RestaurantReview = {
     restaurantName: "Bocas Taco and Tequila",
     location: "Canggu, Bali",
-    address:
-        "Jl. Canggu Padang Linjong No.74a, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361",
-    cost: 2,
     rating: 3,
+    cost: 2,
     summary: "A flavorful explosion in the mouth, with just the right amount of spice.",
     fullReview: `Walking into Bocas, you are immediately swept away from the bustle 
     of Canggu and into a mini oasis. The decor reminds of a upscale LA taqueria, but 
@@ -22,6 +20,10 @@ const bocas: RestaurantReview = {
     the burrito an excellent kick of flavor, who doesn't love a little well dressed Tabasco?
 
     While not the worst, I would not return for the chips alone.`,
+    contactInformation: {
+        address:
+            "Jl. Canggu Padang Linjong No.74a, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361",
+    },
     coverImage: "",
     images: []
 };
