@@ -10,6 +10,7 @@ import matador from "./reviews/matador";
 import puesto from "./reviews/puesto";
 import redStar from "./reviews/redstar";
 import theLawn from "./reviews/thelawn";
+import tonito from "./reviews/tonito";
 
 export interface RestaurantReview {
     restaurantName: string;
@@ -36,7 +37,8 @@ const reviews: RestaurantReview[] = [
     matador,
     puesto,
     redStar,
-    theLawn
+    theLawn,
+    tonito
 ];
 
 export default reviews;

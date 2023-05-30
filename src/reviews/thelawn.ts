@@ -7,7 +7,7 @@ const theLawn: RestaurantReview = {
     address: "Jl. Pura Dalem, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361",
     cost: 3,
     rating: 4,
-    summary: "A flavorful explosion in the mouth, with just the right amount of spice.",
+    summary: "A decadent exterior fails to hide lackluster flavors.",
     fullReview: `At The Lawn, a hipster beach club adjacent to the nearby shore of Canggu, 
     one finds themselves with a variety of flavorful options. If one chooses to select 
     the chips and dips, one can buy a short reprieve from people watching and 

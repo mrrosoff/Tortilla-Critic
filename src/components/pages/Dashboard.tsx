@@ -27,7 +27,7 @@ const Layout = () => {
     const [shownReviews, setShownReviews] = useState(reviews);
 
     return (
-        <Box p={5} display={"flex"} flexDirection={"column"}>
+        <Box width={"100%"} height={"100%"} p={4} display={"flex"} flexDirection={"column"}>
             <SearchBox shownReviews={shownReviews} setShownReviews={setShownReviews} />
             <Box mt={5} mb={5} overflow={"hidden"} sx={{ overflowY: "scroll" }}>
                 <Grid container spacing={2}>
@@ -39,24 +39,6 @@ const Layout = () => {
                         );
                     })}
                 </Grid>
-            </Box>
-            <Box
-                position={"absolute"}
-                bottom={theme.spacing(3)}
-                right={theme.spacing(3)}
-                display={"flex"}
-            >
-                <Typography
-                    sx={{
-                        pl: 0.5,
-                        fontSize: 12,
-                        fontWeight: 800,
-                        cursor: "pointer"
-                    }}
-                    onClick={() => (window.location.href = "https://maxrosoff.com")}
-                >
-                    more by Max Rosoff
-                </Typography>
             </Box>
         </Box>
     );

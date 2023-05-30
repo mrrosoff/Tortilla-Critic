@@ -5,6 +5,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import reviews from "../../reviews";
 import NotFound from "./NotFound";
+import { LocationOn } from "@mui/icons-material";
 
 const Restaurant = () => {
     const { restaurant } = useParams();
@@ -16,6 +17,7 @@ const Restaurant = () => {
         return <NotFound />;
     }
 
+    const { restaurantName } = restaurantDetails;
     return (
         <Box width={"100%"} height={"100%"} position={"relative"}>
             <Box
@@ -23,11 +25,16 @@ const Restaurant = () => {
                 display={"flex"}
                 flexDirection={"column"}
                 justifyContent={"center"}
-                maxWidth={"55%"}
+                maxWidth={"60%"}
                 sx={{ p: 6, zIndex: 1 }}
             >
                 <Box display={"flex"}>
-                    <Typography variant={"h1"}>{restaurantDetails.restaurantName}</Typography>
+                    <Typography
+                        fontWeight={800}
+                        fontSize={Math.min(120 * (12 / restaurantName.length), 120)}
+                    >
+                        {restaurantName}
+                    </Typography>
                     <Box pl={4} pt={8} alignSelf={"center"}>
                         <Rating
                             defaultValue={restaurantDetails.rating / 2}
@@ -37,24 +44,32 @@ const Restaurant = () => {
                         />
                     </Box>
                 </Box>
-                <Box mt={-1} display={"flex"} alignItems={"center"}>
+                <Box mt={-2} display={"flex"} alignItems={"center"}>
+                    <LocationOn sx={{ fontSize: 20 }} />
                     <Typography
-                        sx={{ fontSize: 20 }}
+                        ml={1}
+                        fontSize={20}
+                        sx={{ cursor: "pointer" }}
                         onClick={() => (window.location.href = restaurantDetails.address)}
                     >
                         {restaurantDetails.location}
                     </Typography>
                     {restaurantDetails.website && (
-                        <OpenInNewIcon
-                            sx={{ ml: 2, fontSize: 20 }}
-                            onClick={() => (window.location.href = restaurantDetails.website!!)}
-                        />
+                        <>
+                            <Typography ml={4} fontSize={20}>
+                                Website
+                            </Typography>
+                            <OpenInNewIcon
+                                sx={{ ml: 1, fontSize: 20, cursor: "pointer" }}
+                                onClick={() => (window.location.href = restaurantDetails.website!!)}
+                            />
+                        </>
                     )}
                 </Box>
                 <Typography pt={6} variant={"h4"}>
                     {restaurantDetails.summary}
                 </Typography>
-                <Typography pt={4} sx={{ fontSize: 20 }}>
+                <Typography pt={4} fontSize={20} maxWidth={"90%"}>
                     {restaurantDetails.fullReview}
                 </Typography>
                 <Box>
