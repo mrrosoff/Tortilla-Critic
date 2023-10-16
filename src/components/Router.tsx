@@ -32,15 +32,15 @@ const Layout = () => {
                 sx={{ cursor: "pointer" }}
                 onClick={() => navigate("/")}
             >
-                <Typography variant={"h3"} fontFamily={"Lobster, cursive"}>
+                <Typography variant={"h4"} fontFamily={"Lobster, cursive"}>
                     Tortilla Critic
                 </Typography>
             </Box>
             <Outlet />
             <Box
                 position={"absolute"}
-                bottom={theme.spacing(3)}
-                right={theme.spacing(3)}
+                bottom={theme.spacing(2)}
+                right={theme.spacing(2)}
                 zIndex={1}
                 display={"flex"}
             >

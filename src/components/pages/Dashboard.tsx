@@ -18,24 +18,24 @@ import reviews, { RestaurantReview } from "../../reviews";
 import { useState } from "react";
 
 const Layout = () => {
-    const theme = useTheme();
-    const navigate = useNavigate();
-
     const [shownReviews, setShownReviews] = useState(reviews);
 
     return (
-        <Box width={"100%"} height={"100%"} p={4} display={"flex"} flexDirection={"column"}>
+        <Box width={"100%"} height={"100%"} p={3.5} display={"flex"} flexDirection={"column"}>
             <SearchBox shownReviews={shownReviews} setShownReviews={setShownReviews} />
-            <Box mt={5} mb={5} overflow={"hidden"} sx={{ overflowY: "scroll" }}>
-                <Grid container spacing={2}>
-                    {shownReviews.map((review, index) => {
-                        return (
-                            <Grid key={index}>
-                                <ReviewCard review={review} />
-                            </Grid>
-                        );
-                    })}
-                </Grid>
+            <Box
+                m={-1}
+                mt={2.5}
+                mb={0}
+                height={"100%"}
+                display={"flex"}
+                flexWrap={"wrap"}
+                overflow={"hidden"}
+                sx={{ overflowY: "scroll" }}
+            >
+                {shownReviews.map((review) => (
+                    <ReviewCard review={review} />
+                ))}
             </Box>
         </Box>
     );
@@ -43,7 +43,7 @@ const Layout = () => {
 
 const SearchBox = (props: { shownReviews: any[]; setShownReviews: Function }) => {
     return (
-        <Box maxWidth={"80%"} display={"flex"} flexDirection={"column"}>
+        <Box maxWidth={"50%"} display={"flex"} flexDirection={"column"}>
             <Box display={"flex"} alignItems={"center"} border={1} borderRadius={10}>
                 <IconButton sx={{ p: 1.2, pl: 3, pr: 3 }}>
                     <Search />
@@ -85,26 +85,28 @@ const SearchBox = (props: { shownReviews: any[]; setShownReviews: Function }) =>
 const ReviewCard = (props: { review: any }) => {
     const navigate = useNavigate();
     return (
-        <Card variant="outlined" sx={{ minWidth: 350, maxWidth: 400 }}>
+        <Card variant="outlined" sx={{ m: 1, minWidth: 325, maxWidth: 375 }}>
             <CardActionArea
                 onClick={() => navigate("/" + props.review.restaurantName.toLowerCase())}
+                sx={{ height: "100%" }}
             >
                 <CardContent>
                     <Typography gutterBottom variant="h4" sx={{ fontSize: 22, fontWeight: 800 }}>
                         {props.review.restaurantName}
                     </Typography>
-                    <Box color={"grey.500"} display={"flex"} alignItems={"center"} mb={1}>
-                        <LocationOn sx={{ fontSize: 15 }} />
+                    <Box color={"grey.500"} display={"flex"} alignItems={"center"} mt={-0.8} mb={1}>
+                        <Rating
+                            defaultValue={props.review.rating / 2}
+                            size={"small"}
+                            precision={0.5}
+                            readOnly
+                        />
+                        <LocationOn sx={{ ml: 1.5, fontSize: 15 }} />
                         <Typography sx={{ ml: 0.8, fontSize: 15 }}>
                             {props.review.location}
                         </Typography>
                     </Box>
-                    <Rating
-                        defaultValue={props.review.rating / 2}
-                        size={"small"}
-                        precision={0.5}
-                        readOnly
-                    />
+
                     <Typography variant="body2" color="text.secondary">
                         {props.review.summary}
                     </Typography>

@@ -16,10 +16,7 @@ const App = () => {
                         secondary: { main: "#0B8AAD" }
                     },
                     typography: {
-                        fontFamily: "Carlito, sans-serif",
-                        h3: {
-                            fontSize: 38
-                        }
+                        fontFamily: "Carlito, sans-serif"
                     }
                 })
             ),

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-import { Box, Rating, Typography } from "@mui/material";
+import { Box, Rating, Typography, useMediaQuery, useTheme } from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import reviews from "../../reviews";
@@ -8,6 +8,9 @@ import NotFound from "./NotFound";
 import { LocationOn } from "@mui/icons-material";
 
 const Restaurant = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
     const { restaurant } = useParams();
     const restaurantDetails = reviews.find(
         (item) => item.restaurantName.toLowerCase() === restaurant
@@ -25,13 +28,13 @@ const Restaurant = () => {
                 display={"flex"}
                 flexDirection={"column"}
                 justifyContent={"center"}
-                maxWidth={"60%"}
+                maxWidth={matches ? "60%" : "100%"}
                 sx={{ p: 6, zIndex: 1 }}
             >
                 <Box display={"flex"}>
                     <Typography
                         fontWeight={800}
-                        fontSize={Math.min(120 * (12 / restaurantName.length), 120)}
+                        fontSize={`${Math.min(4 * (12 / restaurantName.length), 4)}rem`}
                     >
                         {restaurantName}
                     </Typography>
